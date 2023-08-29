@@ -1,60 +1,81 @@
-.header-content{
+/* header */
+.header-content {
     padding: 10px 10px 10px 20px;
     background-color: #171717;
 }
-.header-top{
+
+.header-top {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.redes-header{
+
+.redes-header {
     display: flex;
     flex-direction: row;
     width: 40%;
     justify-content: flex-end;
 }
-.text-header-top{
+
+.text-header-top {
     align-self: center;
     color: #FFFFFF;
     font-family: "Montserrat", Sans-serif;
     font-size: 12px;
     font-weight: 400;
 }
-.iconos-header{
+
+.iconos-header {
     align-self: center;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     width: 50%;
 }
-.iconos-redes{
+
+.iconos-redes {
     width: 50px;
     height: 50px;
 }
-.icono-tiktok{
+
+.icono-tiktok {
     background-image: url('../images/iconos/ticktock.svg');
     background-size: cover;
 }
-.icono-youtube{
+
+.icono-youtube {
     background-image: url('../images/iconos/yotube.svg');
     background-size: cover;
 }
-.icono-instagram{
+
+.icono-instagram {
     background-image: url('../images/iconos/instagram.svg');
     background-size: cover;
 }
-.icono-facebook{
+
+.icono-facebook {
     background-image: url('../images/iconos/facebook.svg');
     background-size: cover;
 }
-.header-bottom{
+
+.header-bottom {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
-.barra-buscar{
+
+.menu-header {
+    color: #fff;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.barra-buscar {
     position: relative;
 }
-.input-buscar{
+
+.input-buscar {
     width: 350px;
     padding: 10px;
     padding-right: 35px;
@@ -63,7 +84,8 @@
     outline: none;
     font-size: 1rem;
 }
-.btn-buscar{
+
+.btn-buscar {
     background-color: #EC1C24;
     padding: 10px;
     position: absolute;
@@ -76,12 +98,14 @@
     color: #fff;
     cursor: pointer;
 }
-.btn-buscar:hover{
+
+.btn-buscar:hover {
     background-color: red;
 }
 
 
-.footer-content{
+/* footer */
+.footer-content {
     padding-top: 10px;
     display: flex;
     flex-direction: row;

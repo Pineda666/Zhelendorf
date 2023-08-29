@@ -18,6 +18,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por no
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aros Zehlendorf</title>
 
+    <link href="css/reset.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
