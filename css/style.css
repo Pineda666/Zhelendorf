@@ -1,0 +1,91 @@
+.header-content{
+    padding: 10px 10px 10px 20px;
+    background-color: #171717;
+}
+.header-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.redes-header{
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    justify-content: flex-end;
+}
+.text-header-top{
+    align-self: center;
+    color: #FFFFFF;
+    font-family: "Montserrat", Sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+}
+.iconos-header{
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 50%;
+}
+.iconos-redes{
+    width: 50px;
+    height: 50px;
+}
+.icono-tiktok{
+    background-image: url('../images/iconos/ticktock.svg');
+    background-size: cover;
+}
+.icono-youtube{
+    background-image: url('../images/iconos/yotube.svg');
+    background-size: cover;
+}
+.icono-instagram{
+    background-image: url('../images/iconos/instagram.svg');
+    background-size: cover;
+}
+.icono-facebook{
+    background-image: url('../images/iconos/facebook.svg');
+    background-size: cover;
+}
+.header-bottom{
+    display: flex;
+    justify-content: center;
+}
+.barra-buscar{
+    position: relative;
+}
+.input-buscar{
+    width: 350px;
+    padding: 10px;
+    padding-right: 35px;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    font-size: 1rem;
+}
+.btn-buscar{
+    background-color: #EC1C24;
+    padding: 10px;
+    position: absolute;
+    border: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 0 5px 5px 0;
+    color: #fff;
+    cursor: pointer;
+}
+.btn-buscar:hover{
+    background-color: red;
+}
+
+
+.footer-content{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    background-color: #171717;
+}
