@@ -4,9 +4,9 @@ require 'config/conexionbd.php';
 $db = new Database();
 $con = $db->conectar();
 
-$sql = $con->prepare("SELECT id_aro,nombre,id_tipo_producto FROM aro");
+$sql = $con->prepare("SELECT id_llanta,nombre,id_tipo_producto FROM llanta");
 $sql->execute();
-$resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por nombre de columnas
+$resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para asociar por nombre de columnas
 
 ?>
 
@@ -16,7 +16,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por no
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aros Zehlendorf</title>
+    <title>Llantas Zehlendorf</title>
 
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -36,8 +36,8 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por no
                         <div>
 
                             <?php
-                            $id = $row['id_aro'];
-                            $image = "images/aros/" . $id . "/principal.webp";
+                            $id = $row['id_llanta'];
+                            $image = "images/llantas/" . $id . "/principal.webp";
 
                             if (!file_exists($image)) {
                                 $image = "images/no-photo.jpg";
@@ -49,7 +49,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por no
                                 <h5><?php echo $row['nombre'] ?></h5>
                                 <div>
                                     <div>
-                                        <a href="detalles-producto.php?id=<?php echo $row['id_aro']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_aro'], KEY_TOKEN); ?>">Detalles</a>
+                                        <a href="detalles-producto.php?id=<?php echo $row['id_llanta']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_llanta'], KEY_TOKEN); ?>">Detalles</a>
                                     </div>
                                     <a href="">Consultar disponibilidad</a>
                                 </div>

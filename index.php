@@ -1,10 +1,10 @@
 <?php
-require 'conexion/config.php';
-require 'conexion/configbd.php';
+require 'config/config.php';
+require 'config/conexionbd.php';
 $db = new Database();
 $con = $db->conectar();
 
-$sql = $con->prepare("SELECT id_aros,nombre,modelo,diametro,ancho,pernos,pcd,et,cb,color FROM aros");
+$sql = $con->prepare("SELECT id_aro,nombre,modelo,diametro,ancho,pernos,pcd,et,cb,color FROM aro");
 $sql->execute();
 $resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por nombre de columnas
 
