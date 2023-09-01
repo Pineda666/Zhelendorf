@@ -80,6 +80,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    height: 40px;
 }
 
 .menu-header a {
@@ -110,6 +111,7 @@
 .barra-buscar {
     position: relative;
     width: 50%;
+    margin-top: 20px;
 }
 
 .input-buscar {
@@ -190,36 +192,41 @@ main {
     transition: transform 0.3s;
 }
 
+.content-image-llantas {
+    min-height: 340px;
+}
+
 .product img {
-    max-width: 100%;
-    height: 250px;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .product h2 {
     color: black;
     margin-top: 10px;
     font-size: 1.2em;
+    min-height: 3.05em;
 }
 
 .product a {
     text-decoration: none;
 }
 
-.btn-details,
-.btn-availability {
+.btn-details {
     display: inline-block;
-    margin-top: 10px;
+    margin: 10px 0;
     padding: 8px 16px;
     background-color: #007bff;
     color: #ffffff;
     text-decoration: none;
     border: none;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.btn-details:hover,
-.btn-availability:hover {
+.btn-details:hover {
     background-color: #0056b3;
 }
 
@@ -234,6 +241,10 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.product-image {
+    padding: 20px;
+}
+
 .product-image:hover {
     transition: 0.3s;
     transform: scale(1.05);
@@ -246,8 +257,7 @@ main {
 
 .product-image img {
     max-width: 100%;
-    height: 600px;
-    padding: 10px;
+    height: auto;
 }
 
 .product-info {
@@ -273,6 +283,10 @@ main {
     text-align: left;
 }
 
+.btn-pages-details {
+    display: flex;
+}
+
 .btn-availability,
 .btn-back {
     display: inline-block;
@@ -282,6 +296,7 @@ main {
     color: #ffffff;
     text-decoration: none;
     border: none;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -294,17 +309,22 @@ main {
 
 /********** FOOTER **********/
 .footer-content {
-    padding: 10px;
+    padding-top: 10px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 100%;
     background-color: #171717;
 }
 
+.logo-footer {
+    width: 20%;
+}
 
-/********** RESPONSIVE **********/
+
+/********** RESPONSIVE CELULAR **********/
 @media(max-width:767px) {
+
+    /********** HEADER **********/
     .header-top {
         flex-direction: column;
     }
@@ -313,11 +333,77 @@ main {
         grid-template-columns: 1fr;
     }
 
+    .text-menu-header {
+        width: 90px;
+    }
+
+    .barra-buscar {
+        width: 80%;
+    }
+
+    /********** CUERPO **********/
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /********** PRODUCTOS **********/
     .product-grid {
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        padding: 20px 0 0 0;
+        gap: 10px;
+    }
+
+    .content-image-llantas {
+        min-height: 220px;
+    }
+
+    .product h2 {
+        min-height: 4em;
+    }
+
+    /********** DETALLES DE PRODUCTOS **********/
+    .product-details {
+        flex-direction: column;
+    }
+
+}
+
+/********** RESPONSIVE CELULAR **********/
+@media(min-width:768px) and (max-width:1023px) {
+
+    /********** HEADER **********/
+    .header-bottom {
         grid-template-columns: 1fr;
     }
 
-    .logo-footer {
+    /********** CUERPO **********/
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /********** PRODUCTOS **********/
+    .product-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        width: 100%;
+        padding: 20px 0 0 0;
+        gap: 10px;
+    }
+
+    .content-image-llantas {
+        min-height: 220px;
+    }
+
+    .product h2 {
+        min-height: 4em;
+    }
+
+
+    /********** DETALLES DE PRODUCTOS **********/
+    .product-image {
         width: 50%;
     }
+
 }

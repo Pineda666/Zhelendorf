@@ -4,9 +4,11 @@ require 'config/conexionbd.php';
 $db = new Database();
 $con = $db->conectar();
 
-$sql = $con->prepare("SELECT id_aro,nombre,modelo,diametro,ancho,pernos,pcd,et,cb,color FROM aro");
+$sql = $con->prepare("SELECT id_aro,nombre,id_tipo_producto FROM aro");
 $sql->execute();
 $resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por nombre de columnas
+
+$numeroTelefono = '+51959959195';
 
 ?>
 
@@ -16,7 +18,11 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por no
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zehlendorf Whells</title>
+    <title>Aros Zehlendorf</title>
+    <meta property="og:title" content="Aros Zehlendorf">
+    <meta property="og:description" content="Líder en venta de aros, llantas, faros y accesorios para autos y camionetas. Amplio catálogo. Mejora el rendimiento y estilo de tu vehículo.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/thumbnail.png">
 
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -29,13 +35,42 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por no
     </header>
 
     <main>
-        <div class="content-producto">
-            <div class="filtro">
+        <div class="filtro-producto">
+            <nav>
+                <ul>
+                    <li>Vehículo</li>
+                    <li>Diametro</li>
+                    <li>Pernos</li>
+                    <li>PCD</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="product-grid">
+            <?php foreach ($resultado as $row) { ?>
 
-            </div>
-            <div class="productos">
+                <?php
+                $id = $row['id_aro'];
+                $image = "images/aros/" . $id . "/principal.webp";
 
-            </div>
+                if (!file_exists($image)) {
+                    $image = "images/no-photo.jpg";
+                }
+
+                $nombre = $row['nombre'];
+                $mensaje = 'Hola! Aros Zehlendorf, estoy interesado en comprar el producto ' . $nombre;
+                $enlaceWhatsApp = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=" . urlencode($mensaje);
+                ?>
+                <div class="product">
+                    <a href="detalles-producto.php?id=<?php echo $row['id_aro']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_aro'], KEY_TOKEN); ?>">
+                        <img src="<?php echo $image; ?>">
+                    </a>
+                    <a href="detalles-producto.php?id=<?php echo $row['id_aro']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_aro'], KEY_TOKEN); ?>">
+                        <h2><?php echo $nombre; ?></h2>
+                    </a>
+                    <a href="detalles-producto.php?id=<?php echo $row['id_aro']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_aro'], KEY_TOKEN); ?>" class="btn-details">Detalles</a>
+                    <a href="<?php echo $enlaceWhatsApp; ?>" class="btn-availability">Consultar disponibilidad</a>
+                </div>
+            <?php } ?>
         </div>
     </main>
 

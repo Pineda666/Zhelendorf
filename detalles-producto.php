@@ -33,22 +33,6 @@ if ($id == '' || $token == '' || $tipo == '') {
                 $cb = $row['cb'];
                 $color = $row['color'];
                 $dir_images = 'images/aros/' . $id . '/';
-
-                $rutaImgPrincipal = $dir_images . 'principal.webp';
-
-                if (!file_exists($rutaImgPrincipal)) {
-                    $rutaImgPrincipal  = 'images/no-photo.jpg';
-                }
-
-                $imagenes = array();
-                $dir = dir($dir_images);
-
-                while (($archivo = $dir->read()) != false) {
-                    if ($archivo != 'principal.webp' && strpos($archivo, 'webp')) {
-                        $imagenes[] = $dir_images . $archivo;
-                    }
-                }
-                $dir->close();
             }
         } else if ($tipo == '2') {
             $sql = $con->prepare("SELECT count(id_llanta) FROM llanta WHERE id_llanta=?");
@@ -70,32 +54,56 @@ if ($id == '' || $token == '' || $tipo == '') {
                 $row2 = $sql->fetch((PDO::FETCH_ASSOC));
 
                 $marca_llanta = $row2['marca'];
-
-                $rutaImgPrincipal = $dir_images . 'principal.webp';
-
-                if (!file_exists($rutaImgPrincipal)) {
-                    $rutaImgPrincipal  = 'images/no-photo.jpg';
-                }
-
-                $imagenes = array();
-                $dir = dir($dir_images);
-
-                while (($archivo = $dir->read()) != false) {
-                    if ($archivo != 'principal.webp' && strpos($archivo, 'webp')) {
-                        $imagenes[] = $dir_images . $archivo;
-                    }
-                }
-                $dir->close();
+            }
+        } else if ($tipo == '3') {
+            $sql = $con->prepare("SELECT count(id_faro) FROM faro WHERE id_faro=?");
+            $sql->execute([$id]);
+            if ($sql->fetchColumn() > 0) {
+                $sql = $con->prepare("SELECT nombre FROM faro WHERE id_faro=?");
+                $sql->execute([$id]);
+                $row = $sql->fetch((PDO::FETCH_ASSOC));
+                $nombre = $row['nombre'];
+                $dir_images = 'images/faros/' . $id . '/';
+            }
+        } else if ($tipo == '4') {
+            $sql = $con->prepare("SELECT count(id_accesorio) FROM accesorio WHERE id_accesorio=?");
+            $sql->execute([$id]);
+            if ($sql->fetchColumn() > 0) {
+                $sql = $con->prepare("SELECT nombre,descripcion FROM accesorio WHERE id_accesorio=?");
+                $sql->execute([$id]);
+                $row = $sql->fetch((PDO::FETCH_ASSOC));
+                $nombre = $row['nombre'];
+                $descripcion = $row['descripcion'];
+                $dir_images = 'images/accesorios/' . $id . '/';
             }
         } else {
             echo 'Error: No existe el tipo de producto';
             exit;
         }
+
+        $rutaImgPrincipal = $dir_images . 'principal.webp';
+        if (!file_exists($rutaImgPrincipal)) {
+            $rutaImgPrincipal  = 'images/no-photo.jpg';
+        }
+
+        $imagenes = array();
+        $dir = dir($dir_images);
+
+        while (($archivo = $dir->read()) != false) {
+            if ($archivo != 'principal.webp' && strpos($archivo, 'webp')) {
+                $imagenes[] = $dir_images . $archivo;
+            }
+        }
+        $dir->close();
     } else {
         echo 'Error al procesar la petición token';
         exit;
     }
 }
+
+$numeroTelefono = '+51959959195';
+$mensaje = 'Hola! Aros Zehlendorf, estoy interesado en comprar el producto ' . $nombre;
+$enlaceWhatsApp = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=" . urlencode($mensaje);
 ?>
 
 <!DOCTYPE html>
@@ -104,7 +112,7 @@ if ($id == '' || $token == '' || $tipo == '') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $nombre ?></title>
+    <title><?php echo $nombre; ?></title>
 
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -119,11 +127,11 @@ if ($id == '' || $token == '' || $tipo == '') {
     <main>
         <div class="product-details">
             <div class="product-image">
-                <img src="<?php echo $rutaImgPrincipal ?>">
+                <img src="<?php echo $rutaImgPrincipal; ?>">
             </div>
             <?php foreach ($imagenes as $img) { ?>
                 <div>
-                    <img src="<?php echo $img ?>">
+                    <img src="<?php echo $img; ?>">
                 </div>
             <?php } ?>
             <div class="product-info">
@@ -133,65 +141,79 @@ if ($id == '' || $token == '' || $tipo == '') {
                         <?php if ($tipo == '1') { ?>
                             <tr>
                                 <th>Modelo:</th>
-                                <th><?php echo $modelo ?></th>
+                                <th><?php echo $modelo; ?></th>
                             </tr>
                             <tr>
                                 <th>Diametro:</th>
-                                <th><?php echo $diametro ?></th>
+                                <th><?php echo $diametro; ?></th>
                             </tr>
                             <tr>
                                 <th>Ancho:</th>
-                                <th><?php echo $ancho ?></th>
+                                <th><?php echo $ancho; ?></th>
                             </tr>
                             <tr>
                                 <th>Pernos:</th>
-                                <th><?php echo $pernos ?></th>
+                                <th><?php echo $pernos; ?></th>
                             </tr>
                             <tr>
                                 <th>PCD:</th>
-                                <th><?php echo $pcd ?></th>
+                                <th><?php echo $pcd; ?></th>
                             </tr>
                             <?php if ($et >= '0' && $cb >= '0') { ?>
                                 <tr>
                                     <th>ET:</th>
-                                    <th><?php echo $et ?></th>
+                                    <th><?php echo $et; ?></th>
                                 </tr>
                                 <tr>
                                     <th>CB:</th>
-                                    <th><?php echo $cb ?></th>
+                                    <th><?php echo $cb; ?></th>
                                 </tr>
                             <?php } ?>
                             <tr>
                                 <th>Color:</th>
-                                <th><?php echo $color ?></th>
+                                <th><?php echo $color; ?></th>
                             </tr>
                         <?php  } else if ($tipo == '2') { ?>
                             <tr>
                                 <th>Modelo:</th>
-                                <th><?php echo $modelo ?></th>
+                                <th><?php echo $modelo; ?></th>
                             </tr>
                             <tr>
                                 <th>Marca:</th>
-                                <th><?php echo $marca_llanta ?></th>
+                                <th><?php echo $marca_llanta; ?></th>
                             </tr>
                             <tr>
                                 <th>Diametro de aro:</th>
-                                <th><?php echo $diametro ?></th>
+                                <th><?php echo $diametro; ?></th>
                             </tr>
                             <tr>
                                 <th>Perfil:</th>
-                                <th><?php echo $perfil_llanta ?></th>
+                                <th><?php echo $perfil_llanta; ?></th>
                             </tr>
                             <tr>
                                 <th>Ancho:</th>
-                                <th><?php echo $ancho_llanta ?></th>
+                                <th><?php echo $ancho_llanta; ?></th>
+                            </tr>
+
+                        <?php } else if ($tipo == '3') { ?>
+                            <tr>
+                                <th></th>
+                                <th><?php echo $nombre; ?></th>
+                            </tr>
+
+                        <?php } else if ($tipo == '4') { ?>
+                            <tr>
+                                <th></th>
+                                <th><?php echo $descripcion; ?></th>
                             </tr>
 
                         <?php } ?>
                     </tbody>
                 </table>
-                <a href="" class="btn-availability">Consultar disponibilidad</a>
-                <a class="btn-back">Volver a la lista</a>
+                <div class="btn-pages-details">
+                    <a href="<?php echo $enlaceWhatsApp; ?>" class="btn-availability">Consultar disponibilidad</a>
+                    <a class="btn-back" href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Volver a la lista</a>
+                </div>
             </div>
         </div>
     </main>

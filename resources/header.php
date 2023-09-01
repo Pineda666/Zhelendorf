@@ -13,16 +13,16 @@
     </div>
     <div class="header-bottom">
         <div class="menu-header">
-            <a href="aros.php" <?php if ($_SERVER['PHP_SELF'] == '/NUEVO ZEHLENDORF/aros.php') echo 'class="active"'; ?>>
+            <a href="index.php" <?php if ($_SERVER['PHP_SELF'] == '/NUEVO ZEHLENDORF/index.php') echo 'class="active"'; ?>>
                 <div class="text-menu-header">Aros</div>
             </a>
             <a href="llantas.php" <?php if ($_SERVER['PHP_SELF'] == '/NUEVO ZEHLENDORF/llantas.php') echo 'class="active"'; ?>>
                 <div class="text-menu-header">Llantas</div>
             </a>
-            <a href="#" <?php if ($_SERVER['PHP_SELF'] == '#.php') echo 'class="active"'; ?>>
+            <a href="faros.php" <?php if ($_SERVER['PHP_SELF'] == '/NUEVO ZEHLENDORF/faros.php') echo 'class="active"'; ?>>
                 <div class="text-menu-header">Faros</div>
             </a>
-            <a href="#" <?php if ($_SERVER['PHP_SELF'] == '#.php') echo 'class="active"'; ?>>
+            <a href="accesorios.php" <?php if ($_SERVER['PHP_SELF'] == '/NUEVO ZEHLENDORF/accesorios.php') echo 'class="active"'; ?>>
                 <div class="text-menu-header">Accesorios</div>
             </a>
         </div>
