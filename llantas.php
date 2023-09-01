@@ -23,47 +23,44 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para asociar por n
 </head>
 
 <body>
-
     <header>
-        <?php require_once("recursos/header.php") ?>
+        <?php require_once("resources/header.php") ?>
     </header>
-
     <main>
-        <div>
-            <div>
-                <?php foreach ($resultado as $row) { ?>
-                    <div>
-                        <div>
+        <div class="filtro-producto">
+            <nav>
+                <ul>
+                    <li>Ancho</li>
+                    <li>Perfil</li>
+                    <li>Aro</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="product-grid">
+            <?php foreach ($resultado as $row) { ?>
 
-                            <?php
-                            $id = $row['id_llanta'];
-                            $image = "images/llantas/" . $id . "/principal.webp";
+                <?php
+                $id = $row['id_llanta'];
+                $image = "images/llantas/" . $id . "/principal.webp";
 
-                            if (!file_exists($image)) {
-                                $image = "images/no-photo.jpg";
-                            }
-                            ?>
-
-                            <img src="<?php echo $image; ?>">
-                            <div>
-                                <h5><?php echo $row['nombre'] ?></h5>
-                                <div>
-                                    <div>
-                                        <a href="detalles-producto.php?id=<?php echo $row['id_llanta']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_llanta'], KEY_TOKEN); ?>">Detalles</a>
-                                    </div>
-                                    <a href="">Consultar disponibilidad</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
+                if (!file_exists($image)) {
+                    $image = "images/no-photo.jpg";
+                }
+                ?>
+                <div class="product">
+                    <a href="detalles-producto.php?id=<?php echo $row['id_llanta']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_llanta'], KEY_TOKEN); ?>"><img src="<?php echo $image; ?>"></a>
+                    <a href="detalles-producto.php?id=<?php echo $row['id_llanta']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_llanta'], KEY_TOKEN); ?>">
+                        <h2><?php echo $row['nombre'] ?></h2>
+                    </a>
+                    <a href="detalles-producto.php?id=<?php echo $row['id_llanta']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_llanta'], KEY_TOKEN); ?>" class="btn-details">Detalles</a>
+                    <a href="" class="btn-availability">Consultar disponibilidad</a>
+                </div>
+            <?php } ?>
+        </div>
     </main>
-
     <footer>
-        <?php require_once("recursos/footer.php") ?>
+        <?php require_once("resources/footer.php") ?>
     </footer>
-
 </body>
 
 </html>

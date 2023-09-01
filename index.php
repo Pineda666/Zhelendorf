@@ -25,7 +25,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por no
 <body>
 
     <header>
-        <?php require_once("recursos/header.php") ?>
+        <?php require_once("resources/header.php") ?>
     </header>
 
     <main>
@@ -40,7 +40,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por no
     </main>
 
     <footer>
-        <?php require_once("recursos/footer.php") ?>
+        <?php require_once("resources/footer.php") ?>
     </footer>
 
 </body>

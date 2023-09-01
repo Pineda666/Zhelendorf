@@ -113,104 +113,91 @@ if ($id == '' || $token == '' || $tipo == '') {
 <body>
 
     <header>
-        <?php require_once("recursos/header.php") ?>
+        <?php require_once("resources/header.php") ?>
     </header>
 
     <main>
-        <div>
-            <div>
+        <div class="product-details">
+            <div class="product-image">
+                <img src="<?php echo $rutaImgPrincipal ?>">
+            </div>
+            <?php foreach ($imagenes as $img) { ?>
                 <div>
-
-                    <div>
-                        <div>
-                            <div>
-                                <img src="<?php echo $rutaImgPrincipal ?>">
-                            </div>
-
-                            <?php foreach ($imagenes as $img) { ?>
-                                <div>
-                                    <img src="<?php echo $img ?>">
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-
-
+                    <img src="<?php echo $img ?>">
                 </div>
-                <div>
-                    <h2><?php echo $nombre; ?></h2>
-                    <table>
-                        <tbody>
-                            <?php if ($tipo == '1') { ?>
+            <?php } ?>
+            <div class="product-info">
+                <h2><?php echo $nombre; ?></h2>
+                <table class="table-detail-product">
+                    <tbody>
+                        <?php if ($tipo == '1') { ?>
+                            <tr>
+                                <th>Modelo:</th>
+                                <th><?php echo $modelo ?></th>
+                            </tr>
+                            <tr>
+                                <th>Diametro:</th>
+                                <th><?php echo $diametro ?></th>
+                            </tr>
+                            <tr>
+                                <th>Ancho:</th>
+                                <th><?php echo $ancho ?></th>
+                            </tr>
+                            <tr>
+                                <th>Pernos:</th>
+                                <th><?php echo $pernos ?></th>
+                            </tr>
+                            <tr>
+                                <th>PCD:</th>
+                                <th><?php echo $pcd ?></th>
+                            </tr>
+                            <?php if ($et >= '0' && $cb >= '0') { ?>
                                 <tr>
-                                    <th>Modelo:</th>
-                                    <th><?php echo $modelo ?></th>
+                                    <th>ET:</th>
+                                    <th><?php echo $et ?></th>
                                 </tr>
                                 <tr>
-                                    <th>Diametro:</th>
-                                    <th><?php echo $diametro ?></th>
+                                    <th>CB:</th>
+                                    <th><?php echo $cb ?></th>
                                 </tr>
-                                <tr>
-                                    <th>Ancho:</th>
-                                    <th><?php echo $ancho ?></th>
-                                </tr>
-                                <tr>
-                                    <th>Pernos:</th>
-                                    <th><?php echo $pernos ?></th>
-                                </tr>
-                                <tr>
-                                    <th>PCD:</th>
-                                    <th><?php echo $pcd ?></th>
-                                </tr>
-                                <?php if ($et >= '0' && $cb >= '0') { ?>
-                                    <tr>
-                                        <th>ET:</th>
-                                        <th><?php echo $et ?></th>
-                                    </tr>
-                                    <tr>
-                                        <th>CB:</th>
-                                        <th><?php echo $cb ?></th>
-                                    </tr>
-                                <?php } ?>
-                                <tr>
-                                    <th>Color:</th>
-                                    <th><?php echo $color ?></th>
-                                </tr>
-                            <?php  } else if ($tipo == '2') { ?>
-                                <tr>
-                                    <th>Modelo:</th>
-                                    <th><?php echo $modelo ?></th>
-                                </tr>
-                                <tr>
-                                    <th>Marca:</th>
-                                    <th><?php echo $marca_llanta ?></th>
-                                </tr>
-                                <tr>
-                                    <th>Diametro de aro:</th>
-                                    <th><?php echo $diametro ?></th>
-                                </tr>
-                                <tr>
-                                    <th>Perfil:</th>
-                                    <th><?php echo $perfil_llanta ?></th>
-                                </tr>
-                                <tr>
-                                    <th>Ancho:</th>
-                                    <th><?php echo $ancho_llanta ?></th>
-                                </tr>
-
                             <?php } ?>
-                        </tbody>
-                    </table>
-                    <div>
-                        <button type="button">Consultar disponibilidad</button>
-                    </div>
-                </div>
+                            <tr>
+                                <th>Color:</th>
+                                <th><?php echo $color ?></th>
+                            </tr>
+                        <?php  } else if ($tipo == '2') { ?>
+                            <tr>
+                                <th>Modelo:</th>
+                                <th><?php echo $modelo ?></th>
+                            </tr>
+                            <tr>
+                                <th>Marca:</th>
+                                <th><?php echo $marca_llanta ?></th>
+                            </tr>
+                            <tr>
+                                <th>Diametro de aro:</th>
+                                <th><?php echo $diametro ?></th>
+                            </tr>
+                            <tr>
+                                <th>Perfil:</th>
+                                <th><?php echo $perfil_llanta ?></th>
+                            </tr>
+                            <tr>
+                                <th>Ancho:</th>
+                                <th><?php echo $ancho_llanta ?></th>
+                            </tr>
+
+                        <?php } ?>
+                    </tbody>
+                </table>
+                <a href="" class="btn-availability">Consultar disponibilidad</a>
+                <a class="btn-back">Volver a la lista</a>
             </div>
         </div>
     </main>
 
     <footer>
-        <?php require_once("recursos/footer.php") ?>
+        <?php require_once("resources/footer.php") ?>
     </footer>
 
 </body>

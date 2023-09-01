@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-08-2023 a las 21:56:48
+-- Tiempo de generación: 01-09-2023 a las 16:25:46
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -76,7 +76,11 @@ CREATE TABLE `llanta` (
 
 INSERT INTO `llanta` (`id_llanta`, `nombre`, `modelo`, `ancho_llanta`, `perfil_llanta`, `diametro_aro`, `id_marca_llanta`, `id_tipo_producto`, `estado`) VALUES
 (1, 'BEARWAY 215/45 ZR17 91W YS618', 'YS618', 215, 45, 17, 1, 2, 'd'),
-(2, 'BRIDGESTONE 245/65R17 DUELER AT REVO 2', 'DUELER AT REVO 2', 245, 65, 17, 2, 2, 'd');
+(2, 'BRIDGESTONE 245/65R17 DUELER AT REVO 2', 'DUELER AT REVO 2', 245, 65, 17, 2, 2, 'd'),
+(3, 'BRIDGESTONE 265/70R16 112S AT D694 OWT 3', 'AT D694 OWT 3', 265, 70, 16, 2, 2, 'd'),
+(4, 'BRIDGESTONE 265/65R17 112T DUELER AT REVO 2', 'DUELER AT REVO 2', 265, 65, 17, 2, 2, 'd'),
+(5, 'BRIDGESTONE 205/55R17 91W TURANZA T001', 'TURANZA T001', 205, 55, 17, 2, 2, 'd'),
+(6, 'BRIDGESTONE 225/65R17 DUELER AT REVO 2', 'DUELER AT REVO 2', 225, 65, 17, 2, 2, 'd');
 
 -- --------------------------------------------------------
 
@@ -163,7 +167,7 @@ ALTER TABLE `aro`
 -- AUTO_INCREMENT de la tabla `llanta`
 --
 ALTER TABLE `llanta`
-  MODIFY `id_llanta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_llanta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `marca_llanta`
