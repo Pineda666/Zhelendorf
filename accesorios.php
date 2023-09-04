@@ -17,8 +17,26 @@ $numeroTelefono = '+51959959195';
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="language" content="spanish">
+    <meta name="copyright" content="Aros Zehlendorf">
+    <meta name="author" content="Zehlendorf Wheels">
+    <meta name="audience" content="all">
+    <meta name="description" content="Líder en venta de aros, llantas, faros y accesorios para autos y camionetas. Amplio catálogo. Mejora el rendimiento y estilo de tu vehículo.">
+    <meta itemprop="telephone" content="+51959959195">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <meta property="og:title" content="Aros Zehlendorf">
+    <meta property="og:description" content="Líder en venta de aros, llantas, faros y accesorios para autos y camionetas. Amplio catálogo.">
+    <meta property="og:image" content="images/thumbnail-accesorios.png">
+    <meta property="og:url" content="https://zehlendorf-aros.com">
+    <meta property="og:type" content="website">
+
     <title>Accesorios Zehlendorf</title>
+
+    <link rel="icon" type="image/png" href="images/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="images/favicon-apple-touch.png">
+
+    <link rel="canonical" href="https://zehlendorf-aros.com">
 
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
