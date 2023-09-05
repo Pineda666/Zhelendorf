@@ -13,11 +13,11 @@
 
     <meta property="og:title" content="Aros Zehlendorf">
     <meta property="og:description" content="Líder en venta de aros, llantas, faros y accesorios para autos y camionetas. Amplio catálogo.">
-    <meta property="og:image" content="images/thumbnail-llantas.png">
+    <meta property="og:image" content="images/thumbnail-aros.png">
     <meta property="og:url" content="https://zehlendorf-aros.com">
     <meta property="og:type" content="website">
 
-    <title>Llantas Zehlendorf</title>
+    <title>Aros Zehlendorf</title>
 
     <link rel="icon" href="images/favicon.png" sizes="32x32">
     <link rel="icon" href="images/favicon.png" sizes="192x192">
@@ -30,53 +30,58 @@
     <link href="css/style.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/filtrar_llantas.js"></script>
+    <script src="js/filtrar_aros.js"></script>
 </head>
 
 <body>
+
     <header>
         <?php require_once("resources/header.php") ?>
     </header>
+
     <main>
         <!-- para el efecto de desvanecer al cargar un filtro -->
         <div class="overlay" id="overlay"></div>
         <div class="loader" id="loader"></div>
-        
+
         <div class="filtro-producto">
-            <label>Ancho:</label>
-            <select id="ancho" name="ancho_llanta">
+            <label>Vehículo:</label>
+            <select id="vehiculo" name="vehiculo">
                 <option value="todos">Todos</option>
-                <option value="205">205</option>
-                <option value="215">215</option>
-                <option value="225">225</option>
-                <option value="235">235</option>
-                <option value="245">245</option>
-                <option value="265">265</option>
-                <option value="-165">-165</option>
+                <option value="auto">Auto</option>
+                <option value="camioneta">Camioneta</option>
             </select>
-            <label>Perfil:</label>
-            <select id="perfil" name="perfil_llanta">
+            <label>Diámetro:</label>
+            <select id="diametro" name="diametro_aro">
                 <option value="todos">Todos</option>
-                <option value="40">40</option>
-                <option value="45">45</option>
-                <option value="55">55</option>
-                <option value="60">60</option>
-                <option value="65">65</option>
-                <option value="70">70</option>
-            </select>
-            <label>Aro:</label>
-            <select id="aro" name="diametro_aro">
-                <option value="todos">Todos</option>
-                <option value="14">14</option>
-                <option value="16">16</option>
+                <option value="15">15</option>
+                <option value="6">16</option>
                 <option value="17">17</option>
                 <option value="18">18</option>
             </select>
-            <button type="submit" onclick="filtrar_llantas($('#ancho').val(),$('#perfil').val(),$('#aro').val());">Filtrar</button>
+            <label>Pernos:</label>
+            <select id="pernos" name="pernos">
+                <option value="todos">Todos</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+            <label>PCD:</label>
+            <select id="pcd" name="pcd">
+                <option value="todos">Todos</option>
+                <option value="100">100</option>
+                <option value="105">105</option>
+                <option value="108">108</option>
+                <option value="114.3">114.3</option>
+            </select>
+            <button type="submit" onclick="filtrar_aros($('#vehiculo').val(),$('#diametro').val(),$('#pernos').val(),$('#pcd').val());">Filtrar</button>
         </div>
+
         <div class="product-grid" id="resultado-busqueda">
         </div>
     </main>
+
     <footer>
         <?php require_once("resources/footer.php") ?>
     </footer>

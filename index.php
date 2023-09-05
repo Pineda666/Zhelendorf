@@ -1,19 +1,5 @@
-<?php
-require 'config/config.php';
-require 'config/conexionbd.php';
-$db = new Database();
-$con = $db->conectar();
-
-$sql = $con->prepare("SELECT id_aro,nombre,id_tipo_producto FROM aro");
-$sql->execute();
-$resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por nombre de columnas
-
-$numeroTelefono = '+51959959195';
-
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -31,10 +17,12 @@ $numeroTelefono = '+51959959195';
     <meta property="og:url" content="https://zehlendorf-aros.com">
     <meta property="og:type" content="website">
 
-    <title>Aros Zehlendorf</title>
+    <title>Zehlendorf Wheels</title>
 
-    <link rel="icon" type="image/png" href="images/favicon.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="images/favicon-apple-touch.png">
+    <link rel="icon" href="images/favicon.png" sizes="32x32">
+    <link rel="icon" href="images/favicon.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <meta name="msapplication-TileImage" content="images/favicon.png">
 
     <link rel="canonical" href="https://zehlendorf-aros.com">
 
@@ -49,42 +37,34 @@ $numeroTelefono = '+51959959195';
     </header>
 
     <main>
-        <div class="filtro-producto">
-            <nav>
-                <ul>
-                    <li>Vehículo</li>
-                    <li>Diametro</li>
-                    <li>Pernos</li>
-                    <li>PCD</li>
-                </ul>
-            </nav>
+        <div class="slider-superior">
+            <img src="images/index/superior-index-1.webp">
         </div>
-        <div class="product-grid">
-            <?php foreach ($resultado as $row) { ?>
-
-                <?php
-                $id = $row['id_aro'];
-                $image = "images/aros/" . $id . "/principal.webp";
-
-                if (!file_exists($image)) {
-                    $image = "images/no-photo.jpg";
-                }
-
-                $nombre = $row['nombre'];
-                $mensaje = 'Hola! Aros Zehlendorf, estoy interesado en comprar el producto ' . $nombre;
-                $enlaceWhatsApp = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=" . urlencode($mensaje);
-                ?>
-                <div class="product">
-                    <a href="detalles-producto.php?id=<?php echo $row['id_aro']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_aro'], KEY_TOKEN); ?>">
-                        <img src="<?php echo $image; ?>">
-                    </a>
-                    <a href="detalles-producto.php?id=<?php echo $row['id_aro']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_aro'], KEY_TOKEN); ?>">
-                        <h2><?php echo $nombre; ?></h2>
-                    </a>
-                    <a href="detalles-producto.php?id=<?php echo $row['id_aro']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_aro'], KEY_TOKEN); ?>" class="btn-details">Detalles</a>
-                    <a href="<?php echo $enlaceWhatsApp; ?>" class="btn-availability">Consultar disponibilidad</a>
-                </div>
-            <?php } ?>
+        <div class="superior">
+            <div class="superior-elementos">
+                <a href="aros.php"><img src="images/thumbnail-aros.png"></a>
+                <a class="btn-buscar-index" href="aros.php">
+                    <h3>Buscar Aros</h3>
+                </a>
+            </div>
+            <div class="superior-elementos llanta">
+                <a href="llantas.php"><img src="images/thumbnail-llantas.png"></a>
+                <a class="btn-buscar-index" href="llantas.php">
+                    <h3>Buscar Llantas</h3>
+                </a>
+            </div>
+        </div>
+        <div class="llantas-index-container">
+            <div class="llantas-index-text">
+                <h1>Variedad de marcas</h1>
+            </div>
+            <div class="llantas-index">
+                <div class="img-llantas-index"><a href="llantas.php"><img src="images/index/inferior-index-1.webp"></a></div>
+                <div class="img-llantas-index"><a href="llantas.php"><img src="images/index/inferior-index-2.webp"></a></div>
+                <div class="img-llantas-index"><a href="llantas.php"><img src="images/index/inferior-index-3.webp"></a></div>
+                <div class="img-llantas-index"><a href="llantas.php"><img src="images/index/inferior-index-4.webp"></a></div>
+                <div class="img-llantas-index"><a href="llantas.php"><img src="images/index/inferior-index-5.webp"></a></div>
+            </div>
         </div>
     </main>
 

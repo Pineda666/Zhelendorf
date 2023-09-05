@@ -13,7 +13,7 @@ $numeroTelefono = '+51959959195';
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -33,8 +33,10 @@ $numeroTelefono = '+51959959195';
 
     <title>Faros Zehlendorf</title>
 
-    <link rel="icon" type="image/png" href="images/favicon.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="images/favicon-apple-touch.png">
+    <link rel="icon" href="images/favicon.png" sizes="32x32">
+    <link rel="icon" href="images/favicon.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <meta name="msapplication-TileImage" content="images/favicon.png">
 
     <link rel="canonical" href="https://zehlendorf-aros.com">
 

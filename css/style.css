@@ -79,7 +79,7 @@
 .menu-header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 5%;
+    gap: 5px;
     height: 40px;
 }
 
@@ -152,13 +152,170 @@ main {
     background-color: #f4f4f4;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Estilo para la capa de fondo opaco */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    /* Fondo semitransparente */
+    z-index: 9999;
+    /* Asegura que esté en la parte superior */
+}
+
+/* Estilo para el elemento de carga */
+.loader {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    /* Asegura que esté en la parte superior */
+}
+
+
+
+
+.slider-superior {
+    width: 100%;
+}
+
+.slider-superior img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.superior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4em;
+    margin: 20px auto;
+}
+
+.superior-elementos {
+    width: 200px;
+    text-align: center;
+}
+
+.superior-elementos a {
+    cursor: pointer;
+}
+
+.superior-elementos img {
+    width: 100%;
+}
+
+.superior-elementos.llanta img {
+    width: 145px;
+}
+
+.superior-elementos:not(:hover) img {
+    transition: transform 0.3s;
+    transform: scale(1.05);
+}
+
+.btn-buscar-index {
+    display: block;
+    margin: 10px 0;
+    padding: 8px 16px;
+    background-color: #EC1C24;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-buscar-index:hover {
+    background-color: red;
+}
+
+.btn-buscar-index h3 {
+    font-size: 1.2em;
+}
+
+.llantas-index-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.llantas-index-text {
+    text-align: center;
+    color: #171717;
+    font-family: "Poppins", Sans-serif;
+    font-size: 43px;
+    font-weight: 800;
+}
+
+.llantas-index {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: 20px auto;
+    gap: 2em;
+}
+
+.img-llantas-index {
+    width: 200px;
+}
+
+.llantas-index img {
+    width: 100%;
+    display: block;
+}
+
+/* Estilo para el contenedor principal */
+.filtro-producto {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* Centrar horizontalmente */
+    max-width: 800px;
+    /* Ajusta el ancho máximo según tus preferencias */
+    margin: 20px auto;
+    /* Centrar horizontalmente */
+    text-align: center;
+}
+
+/* Estilo para las etiquetas (labels) */
+.filtro-producto label {
+    font-weight: bold;
+    margin-right: 10px;
+    text-align: right;
+}
+
+/* Estilo para los selectores */
+.filtro-producto select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Estilo para el botón de filtrar */
+.filtro-producto button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+}
 
 /********** PRODUCTOS **********/
-.filtro-producto {
-    width: 20%;
-}
 
 .filtro-producto ul {
     display: grid;
@@ -168,10 +325,11 @@ main {
 }
 
 .product-grid {
+    width: 80%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-    padding: 5% 2%;
+    padding: 3% 2%;
     max-width: 1200px;
 }
 
@@ -242,6 +400,7 @@ main {
 }
 
 .product-image {
+    width: 35%;
     padding: 20px;
 }
 
@@ -263,6 +422,9 @@ main {
 .product-info {
     flex: 1;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .product-info h2 {
@@ -289,8 +451,7 @@ main {
 
 .btn-availability,
 .btn-back {
-    display: inline-block;
-    margin-right: 10px;
+    display: block;
     padding: 10px 20px;
     background-color: #007bff;
     color: #ffffff;
@@ -299,6 +460,11 @@ main {
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+.btn-availability.page-detail,
+.btn-back.page-detail {
+    margin-right: 10px;
 }
 
 .btn-availability:hover,
@@ -342,15 +508,52 @@ main {
     }
 
     /********** CUERPO **********/
-    main {
+    .superior {
+        gap: 10px;
+    }
+
+    .superior-elementos {
+        width: 100px;
+    }
+
+    .superior-elementos.llanta img {
+        width: 72px;
+    }
+
+    .llantas-index-text {
+        font-size: 23px;
+    }
+
+    .llantas-index {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .img-llantas-index {
+        width: 100px;
+    }
+
+    .filtro-producto {
         flex-direction: column;
-        align-items: center;
+    }
+
+    .filtro-producto label {
+        text-align: center;
+        /* Centrar el texto en dispositivos móviles */
+        min-width: auto;
+        /* Eliminar el ancho mínimo en dispositivos móviles */
+    }
+
+    .filtro-producto select {
+        margin-bottom: 10px;
+        margin-right: 0;
     }
 
     /********** PRODUCTOS **********/
     .product-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 1%;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 10px;
+        width: 90%;
     }
 
     .content-image-llantas {
@@ -364,11 +567,15 @@ main {
     /********** DETALLES DE PRODUCTOS **********/
     .product-details {
         flex-direction: column;
+        align-items: center;
     }
 
+    .product-image {
+        width: 50%;
+    }
 }
 
-/********** RESPONSIVE CELULAR **********/
+/********** RESPONSIVE TABLET **********/
 @media(min-width:768px) and (max-width:1023px) {
 
     /********** HEADER **********/
@@ -377,17 +584,36 @@ main {
     }
 
     /********** CUERPO **********/
-    main {
-        flex-direction: column;
-        align-items: center;
+    .superior {
+        gap: 10px;
+    }
+
+    .superior-elementos {
+        width: 100px;
+    }
+
+    .superior-elementos.llanta img {
+        width: 73px;
+    }
+
+    .llantas-index-text {
+        font-size: 33px;
+    }
+
+    .llantas-index {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+    }
+
+    .img-llantas-index {
+        width: 150px;
     }
 
     /********** PRODUCTOS **********/
     .product-grid {
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        width: 100%;
-        padding: 20px 0 0 0;
         gap: 10px;
+        width: 90%;
     }
 
     .content-image-llantas {
@@ -400,8 +626,6 @@ main {
 
 
     /********** DETALLES DE PRODUCTOS **********/
-    .product-image {
-        width: 50%;
-    }
+
 
 }

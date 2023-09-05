@@ -1,6 +1,6 @@
 <div class="header-content">
     <div class="header-top">
-        <div class="logo-header"><a href="index.php"><img class="logo-img" src="images/header/logo-nuevo-pequenio.png"></a></div>
+        <div class="logo-header"><a href="http://localhost/NUEVO%20ZEHLENDORF"><img class="logo-img" src="images/header/logo-nuevo-pequenio.png"></a></div>
         <div class="redes-header">
             <div class="text-header-top"><span>Visita nuestras redes:</span></div>
             <div class="iconos-header">
@@ -13,7 +13,7 @@
     </div>
     <div class="header-bottom">
         <div class="menu-header">
-            <a href="index.php" <?php if ($_SERVER['PHP_SELF'] == '/NUEVO ZEHLENDORF/index.php') echo 'class="active"'; ?>>
+            <a href="aros.php" <?php if ($_SERVER['PHP_SELF'] == '/NUEVO ZEHLENDORF/aros.php') echo 'class="active"'; ?>>
                 <div class="text-menu-header">Aros</div>
             </a>
             <a href="llantas.php" <?php if ($_SERVER['PHP_SELF'] == '/NUEVO ZEHLENDORF/llantas.php') echo 'class="active"'; ?>>

@@ -1,0 +1,90 @@
+<?php
+include('conexionbd.php');
+require 'config.php';
+
+$numeroTelefono = '+51959959195';
+
+if ($_POST['tipo_producto'] == 'aro') {
+    $db = new Database();
+    $conexion = $db->conectar();
+
+    $query = "SELECT * FROM aro WHERE nombre != '' ";
+    if ($_POST["vehiculo"] != 'todos') {
+        $query .= "AND vehiculo = '" . $_POST["vehiculo"] . "' ";
+    }
+    if ($_POST["diametro"] != 'todos') {
+        $query .= "AND diametro = '" . $_POST["diametro"] . "' ";
+    }
+    if ($_POST["pernos"] != 'todos') {
+        $query .= "AND pernos = '" . $_POST["pernos"] . "' ";
+    }
+    if ($_POST["pcd"] != 'todos') {
+        $query .= "AND pcd = '" . $_POST["pcd"] . "' ";
+    }
+
+    $resultado = $conexion->query($query);
+
+    while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
+        $id = $row['id_aro'];
+        $image = "images/aros/" . $id . "/principal.webp";
+
+        $nombre = $row['nombre'];
+        $tipo_producto = $row['id_tipo_producto'];
+        $mensaje = 'Hola! Aros Zehlendorf, estoy interesado en comprar el producto ' . $nombre;
+        $enlaceWhatsApp = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=" . urlencode($mensaje);
+
+        echo '
+            <div class="product">
+                <a href="detalles-producto.php?id=' . $id . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id, KEY_TOKEN) . '">
+                    <img src="' . $image . '">
+                </a>
+                <a href="detalles-producto.php?id=' . $id . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id, KEY_TOKEN) . '">
+                    <h2>' . $nombre . '</h2>
+                </a>
+                <a href="detalles-producto.php?id=' . $id . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id, KEY_TOKEN) . '" class="btn-details">Detalles</a>
+                <a href="' . $enlaceWhatsApp . '" class="btn-availability">Consultar disponibilidad</a>
+            </div>
+        ';
+    }
+}
+
+if ($_POST['tipo_producto'] == 'llanta') {
+    $db = new Database();
+    $conexion = $db->conectar();
+
+    $query = "SELECT*FROM llanta WHERE nombre != ''";
+    if ($_POST['ancho'] != 'todos') {
+        $query .= "AND ancho_llanta = '" . $_POST['ancho'] . "'";
+    }
+    if ($_POST['perfil'] != 'todos') {
+        $query .= "AND perfil_llanta = '" . $_POST['perfil'] . "'";
+    }
+    if ($_POST['aro'] != 'todos') {
+        $query .= "AND diametro_aro = '" . $_POST['aro'] . "'";
+    }
+
+    $resultado = $conexion->query($query);
+
+    while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
+        $id = $row['id_llanta'];
+        $image = 'images/llantas/' . $id . '/principal.webp';
+
+        $nombre = $row['nombre'];
+        $tipo_producto = $row['id_tipo_producto'];
+        $mensaje = 'Hola! Aros Zehlendorf, estoy interesado en comprar el producto ' . $nombre;
+        $enlaceWhatsApp = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=" . urlencode($mensaje);
+
+        echo '        
+            <div class="product">
+                <a href="detalles-producto.php?id=' . $id . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id, KEY_TOKEN) . '">
+                    <div class="content-image-llantas"><img src="' . $image . '"></div>
+                </a>
+                <a href="detalles-producto.php?id=' . $id . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id, KEY_TOKEN) . '">
+                    <h2>' . $nombre . '</h2>
+                </a>
+                <a href="detalles-producto.php?id=' . $id . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id, KEY_TOKEN) . '" class="btn-details">Detalles</a>
+                <a href="' . $enlaceWhatsApp . '" class="btn-availability">Consultar disponibilidad</a>
+            </div>
+        ';
+    }
+}

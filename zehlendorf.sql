@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-09-2023 a las 15:35:42
+-- Tiempo de generación: 06-09-2023 a las 00:47:39
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -62,6 +62,7 @@ CREATE TABLE `aro` (
   `et` float NOT NULL,
   `cb` float NOT NULL,
   `color` varchar(50) NOT NULL,
+  `vehiculo` varchar(50) NOT NULL,
   `id_tipo_producto` int(11) NOT NULL,
   `estado` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -70,11 +71,11 @@ CREATE TABLE `aro` (
 -- Volcado de datos para la tabla `aro`
 --
 
-INSERT INTO `aro` (`id_aro`, `nombre`, `modelo`, `diametro`, `ancho`, `pernos`, `pcd`, `et`, `cb`, `color`, `id_tipo_producto`, `estado`) VALUES
-(1, 'N RO A875 15X7.0 4X100 ET25 CB(73.1) XB', '151032', 15, 7, 4, 100, 25, 73.1, 'XB', 1, 'd'),
-(2, 'N RO 157088 15X7.0 4X100 4X114.3 BLACK MACHINE FACE', '7088', 15, 7, 4, 100, -1, -1, 'BLACK MACHINE FACE', 1, 'd'),
-(3, 'N RO 5819 15X7.0 4X100 4X114.3 BLUE UNDERCUT BLACK MACHINE FACE', 'RO 5819', 15, 7, 4, 100, -1, -1, 'BLUE UNDERCUT BLACK MACHINE FACE', 1, 'd'),
-(4, 'N HC 15Y5171A 15X6.5 5X100 MB', '5171A', 15, 6.5, 5, 100, -1, -1, 'MB', 1, 'd');
+INSERT INTO `aro` (`id_aro`, `nombre`, `modelo`, `diametro`, `ancho`, `pernos`, `pcd`, `et`, `cb`, `color`, `vehiculo`, `id_tipo_producto`, `estado`) VALUES
+(1, 'N RO A875 15X7.0 4X100 ET25 CB(73.1) XB', '151032', 15, 7, 4, 100, 25, 73.1, 'XB', 'auto', 1, 'd'),
+(2, 'N RO 157088 15X7.0 4X100 4X114.3 BLACK MACHINE FACE', '7088', 15, 7, 4, 100, -1, -1, 'BLACK MACHINE FACE', 'auto', 1, 'd'),
+(3, 'N RO 5819 15X7.0 4X100 4X114.3 BLUE UNDERCUT BLACK MACHINE FACE', 'RO 5819', 15, 7, 4, 100, -1, -1, 'BLUE UNDERCUT BLACK MACHINE FACE', 'auto', 1, 'd'),
+(4, 'N HC 15Y5171A 15X6.5 5X100 MB', '5171A', 15, 6.5, 5, 100, -1, -1, 'MB', 'auto', 1, 'd');
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,10 @@ INSERT INTO `llanta` (`id_llanta`, `nombre`, `modelo`, `ancho_llanta`, `perfil_l
 (3, 'BRIDGESTONE 265/70R16 112S AT D694 OWT 3', 'AT D694 OWT 3', 265, 70, 16, 2, 2, 'd'),
 (4, 'BRIDGESTONE 265/65R17 112T DUELER AT REVO 2', 'DUELER AT REVO 2', 265, 65, 17, 2, 2, 'd'),
 (5, 'BRIDGESTONE 205/55R17 91W TURANZA T001', 'TURANZA T001', 205, 55, 17, 2, 2, 'd'),
-(6, 'BRIDGESTONE 225/65R17 DUELER AT REVO 2', 'DUELER AT REVO 2', 225, 65, 17, 2, 2, 'd');
+(6, 'BRIDGESTONE 225/65R17 DUELER AT REVO 2', 'DUELER AT REVO 2', 225, 65, 17, 2, 2, 'd'),
+(7, 'DUNLOP 225/60R17 99H SP SPORT 270', 'SP SPORT 270', 225, 60, 17, 4, 2, 'd'),
+(8, 'DUNLOP 235/40R18 95W DZ102', 'DZ102', 235, 40, 18, 4, 2, 'd'),
+(9, 'DUNLOP 165/60R14 75T -SP TOOURING R1 TH', '-SP TOOURING R1 TH', -165, 60, 14, 4, 2, 'd');
 
 -- --------------------------------------------------------
 
@@ -242,7 +246,7 @@ ALTER TABLE `faro`
 -- AUTO_INCREMENT de la tabla `llanta`
 --
 ALTER TABLE `llanta`
-  MODIFY `id_llanta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_llanta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `marca_llanta`

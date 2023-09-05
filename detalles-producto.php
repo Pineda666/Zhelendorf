@@ -107,7 +107,7 @@ $enlaceWhatsApp = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=" . 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -126,8 +126,10 @@ $enlaceWhatsApp = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=" . 
 
     <title><?php echo $nombre; ?></title>
 
-    <link rel="icon" type="image/png" href="images/favicon.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="images/favicon-apple-touch.png">
+    <link rel="icon" href="images/favicon.png" sizes="32x32">
+    <link rel="icon" href="images/favicon.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <meta name="msapplication-TileImage" content="images/favicon.png">
 
     <link rel="canonical" href="https://zehlendorf-aros.com">
 
@@ -228,8 +230,8 @@ $enlaceWhatsApp = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=" . 
                     </tbody>
                 </table>
                 <div class="btn-pages-details">
-                    <a href="<?php echo $enlaceWhatsApp; ?>" class="btn-availability">Consultar disponibilidad</a>
-                    <a class="btn-back" href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Volver a la lista</a>
+                    <a href="<?php echo $enlaceWhatsApp; ?>" class="btn-availability page-detail">Consultar disponibilidad</a>
+                    <a class="btn-back page-detail" href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Volver a la lista</a>
                 </div>
             </div>
         </div>
