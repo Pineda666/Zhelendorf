@@ -42,25 +42,25 @@
         </div>
         <div class="superior">
             <div class="superior-elementos">
-                <a href="aros.php"><img src="images/thumbnail-aros.png" alt="imagen de aro Zehlendorf"></a>
+                <a href="aros.php"><img src="images/thumbnail-aros.webp" alt="imagen de aro Zehlendorf"></a>
                 <a class="btn-buscar-index" href="aros.php">
                     <h3>Buscar Aros</h3>
                 </a>
             </div>
             <div class="superior-elementos llanta">
-                <a href="llantas.php"><img src="images/thumbnail-llantas.png" alt="imagen de llanta Zehlendorf"></a>
+                <a href="llantas.php"><img src="images/thumbnail-llantas.webp" alt="imagen de llanta Zehlendorf"></a>
                 <a class="btn-buscar-index" href="llantas.php">
                     <h3>Buscar Llantas</h3>
                 </a>
             </div>
             <div class="superior-elementos">
-                <a href="faros.php"><img src="images/thumbnail-faros.png" alt="imagen de faro Zehlendorf"></a>
+                <a href="faros.php"><img src="images/thumbnail-faros.webp" alt="imagen de faro Zehlendorf"></a>
                 <a class="btn-buscar-index" href="faros.php">
                     <h3>Buscar Faros</h3>
                 </a>
             </div>
             <div class="superior-elementos">
-                <a href="accesorios.php"><img src="images/thumbnail-accesorios.png" alt="imagen de accesorio Zehlendorf"></a>
+                <a href="accesorios.php"><img src="images/thumbnail-accesorios.webp" alt="imagen de accesorio Zehlendorf"></a>
                 <a class="btn-buscar-index" href="accesorios.php">
                     <h3>Buscar Accesorios</h3>
                 </a>
@@ -85,6 +85,9 @@
             <div class="mapa">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.445498088105!2d-77.023856623983!3d-12.081624342552644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c886411daef5%3A0x6b0428cb4e10e33c!2sAros%20Zehlendorf%20S.A.C!5e0!3m2!1ses!2spe!4v1694039156512!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
+        </div>
+        <div class="video-index">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/JRRfudfANtM?si=2AGXEJ-u6Gaj81Z8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </main>
 

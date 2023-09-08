@@ -1,6 +1,6 @@
 <div class="header-content">
     <div class="header-top">
-        <div class="logo-header"><a href="http://localhost/NUEVO%20ZEHLENDORF"><img class="logo-img" src="images/header/logo-nuevo-pequenio.png" alt="logo"></a></div>
+        <div class="logo-header"><a href="http://localhost/NUEVO%20ZEHLENDORF"><img class="logo-img" src="images/header/logo-nuevo-pequenio.webp" alt="logo"></a></div>
         <div class="redes-header">
             <div class="text-header-top"><span>Visita nuestras redes:</span></div>
             <div class="iconos-header">

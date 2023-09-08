@@ -5,10 +5,15 @@ require 'config.php';
 $numeroTelefono = '+51959959195';
 
 if ($_POST['tipo_producto'] == 'aro') {
+    
+    $pagina = 1;
+    $limit_product = 4;
+    $inicio = ($pagina-1) * $limit_product;
+
     $db = new Database();
     $conexion = $db->conectar();
 
-    $query = "SELECT * FROM aro WHERE nombre != '' ";
+    $query = "SELECT SQL_CALC_FOUND_ROWS * FROM aro WHERE nombre != '' ";
     if ($_POST["vehiculo"] != 'todos') {
         $query .= "AND vehiculo = '" . $_POST["vehiculo"] . "' ";
     }
@@ -21,8 +26,11 @@ if ($_POST['tipo_producto'] == 'aro') {
     if ($_POST["pcd"] != 'todos') {
         $query .= "AND pcd = '" . $_POST["pcd"] . "' ";
     }
+    $query .= "LIMIT $inicio , $limit_product";
 
     $resultado = $conexion->query($query);
+
+    
 
     while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
         $id = $row['id_aro'];
