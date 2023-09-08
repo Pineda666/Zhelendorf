@@ -50,26 +50,6 @@
     height: 30px;
 }
 
-.icono-tiktok {
-    background-image: url('../images/iconos/ticktock.svg');
-    background-size: cover;
-}
-
-.icono-youtube {
-    background-image: url('../images/iconos/yotube.svg');
-    background-size: cover;
-}
-
-.icono-instagram {
-    background-image: url('../images/iconos/instagram.svg');
-    background-size: cover;
-}
-
-.icono-facebook {
-    background-image: url('../images/iconos/facebook.svg');
-    background-size: cover;
-}
-
 .header-bottom {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -109,38 +89,35 @@
 }
 
 .barra-buscar {
-    position: relative;
-    width: 50%;
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 70%;
 }
 
 .input-buscar {
-    width: 80%;
-    height: 23px;
-    padding: 10px;
-    padding-right: 35px;
-    border-radius: 5px;
-    border: 0;
-    outline: none;
+    flex: 1;
     font-size: 1rem;
+    border: none;
+    padding: 10px;
+    outline: none;
 }
 
 .btn-buscar {
     background-color: #EC1C24;
+    height: 100%;
+    color: white;
+    border: none;
     padding: 10px;
-    position: absolute;
-    border: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    border-radius: 0 5px 5px 0;
-    color: #fff;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .btn-buscar:hover {
-    background-color: red;
+    background-color: #ff0000;
 }
 
 
@@ -181,9 +158,6 @@ main {
     /* Asegura que esté en la parte superior */
 }
 
-
-
-
 .slider-superior {
     width: 100%;
 }
@@ -197,9 +171,10 @@ main {
 
 .superior {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 4em;
     margin: 20px auto;
+    align-items: end;
 }
 
 .superior-elementos {
@@ -238,7 +213,7 @@ main {
 }
 
 .btn-buscar-index:hover {
-    background-color: red;
+    background-color: #ff0000;
 }
 
 .btn-buscar-index h3 {
@@ -250,7 +225,7 @@ main {
     flex-direction: column;
 }
 
-.llantas-index-text {
+.texto-subtitulos {
     text-align: center;
     color: #171717;
     font-family: "Poppins", Sans-serif;
@@ -262,7 +237,6 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin: 20px auto;
-    gap: 2em;
 }
 
 .img-llantas-index {
@@ -272,6 +246,31 @@ main {
 .llantas-index img {
     width: 100%;
     display: block;
+}
+
+.mapa-content {
+    width: 100%;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mapa {
+    width: 50%;
+    position: relative;
+    padding-bottom: 40%;
+    /* Proporción 16:9 (para mantener la relación de aspecto) */
+    height: 0;
+    overflow: hidden;
+}
+
+.mapa iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* Estilo para el contenedor principal */
@@ -504,12 +503,21 @@ main {
     }
 
     .barra-buscar {
-        width: 80%;
+        width: 100%;
+    }
+
+    .input-buscar {
+        font-size: 13px;
+    }
+
+    .btn-buscar {
+        font-size: 13px;
     }
 
     /********** CUERPO **********/
     .superior {
         gap: 10px;
+        grid-template-columns: 1fr 1fr;
     }
 
     .superior-elementos {
@@ -533,6 +541,12 @@ main {
         width: 100px;
     }
 
+    .mapa{
+        width: 90%;
+    }
+
+
+    /********** PRODUCTOS **********/
     .filtro-producto {
         flex-direction: column;
     }
@@ -549,7 +563,6 @@ main {
         margin-right: 0;
     }
 
-    /********** PRODUCTOS **********/
     .product-grid {
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
         gap: 10px;
@@ -581,6 +594,14 @@ main {
     /********** HEADER **********/
     .header-bottom {
         grid-template-columns: 1fr;
+    }
+
+    .input-buscar {
+        font-size: 13px;
+    }
+
+    .btn-buscar {
+        font-size: 13px;
     }
 
     /********** CUERPO **********/
