@@ -27,8 +27,8 @@
             </a>
         </div>
         <div class="barra-buscar">
-            <input class="input-buscar" type="text" placeholder="Buscar...">
-            <button class="btn-buscar">Buscar</button>
+            <input class="input-buscar" type="text" placeholder="Buscar..." name="campo" id="campo" onkeyup="filtrar_producto('aro','1');">
+            <button class="btn-buscar" type="submit" onclick="filtrar_producto('aro','1');">Buscar</button>
         </div>
     </div>
 </div>

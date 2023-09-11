@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-09-2023 a las 00:59:45
+-- Tiempo de generación: 12-09-2023 a las 01:00:30
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -75,7 +75,26 @@ INSERT INTO `aro` (`id_aro`, `nombre`, `modelo`, `diametro`, `ancho`, `pernos`, 
 (1, 'N RO A875 15X7.0 4X100 ET25 CB(73.1) XB', '151032', 15, 7, 4, 100, 25, 73.1, 'XB', 'auto', 1, 'd'),
 (2, 'N RO 157088 15X7.0 4X100 4X114.3 BLACK MACHINE FACE', '7088', 15, 7, 4, 100, -1, -1, 'BLACK MACHINE FACE', 'auto', 1, 'd'),
 (3, 'N RO 5819 15X7.0 4X100 4X114.3 BLUE UNDERCUT BLACK MACHINE FACE', 'RO 5819', 15, 7, 4, 100, -1, -1, 'BLUE UNDERCUT BLACK MACHINE FACE', 'auto', 1, 'd'),
-(4, 'N HC 15Y5171A 15X6.5 5X100 MB', '5171A', 15, 6.5, 5, 100, -1, -1, 'MB', 'auto', 1, 'd');
+(4, 'N HC 15Y5171A 15X6.5 5X100 MB', '5171A', 15, 6.5, 5, 100, -1, -1, 'MB', 'auto', 1, 'd'),
+(5, '1095 17X9.0 6X139.7 ET:0 CB:110.5 BLACK LP', '1095', 17, 9, 6, 139.7, 0, 110.5, 'BLACK LP', 'auto', 1, 'd'),
+(6, '1117 17X7.0 5X114.3 ET:35 CB:73.1 DARK GMMF', '1117', 17, 7, 5, 114.3, 35, 73.1, 'DARK GMMF', 'camioneta', 1, 'd'),
+(7, '11659-3 17X9.0 6X139.7 ET:15 CB:106 MATT BLACK', '11659-3', 17, 9, 6, 139.7, 15, 106, 'MATT BLACK', 'camioneta', 1, 'd'),
+(8, '3915 17X7.5 4X100 ET:35 CB:73 SILVER MF', '3915', 17, 7.5, 4, 100, 35, 73, 'SILVER MF', 'camioneta', 1, 'd'),
+(9, '5127 17X8.0 5X112 ET:35 CB:66.45 HYPER BLACK', '5127', 17, 8, 5, 112, 35, 66.45, 'HYPER BLACK', 'camioneta', 1, 'd'),
+(10, '601 17×8.5 6X139.7 ET:12 CB:110 MSB', '601', 17, 8.5, 6, 139.7, 12, 110, 'MSB', 'camioneta', 1, 'd'),
+(11, '602 17X8.5 6X139.7 ET:0 CB:110.1 FSB', '602', 17, 8.5, 6, 139.7, 0, 110.1, 'FSB', 'camioneta', 1, 'd'),
+(12, '602 CAMIONETA 17X8.5 5X127 ET:-12 CB:-71.56 FSB', '602', 17, 8.5, 5, 127, -12, -71.56, 'FSB', 'camioneta', 1, 'd'),
+(13, '70217K 17X9.0 6X139.7 ET:-12 CB:110.1 MATT BLACK', '70217K', 17, 9, 6, 139.7, -12, 110.1, 'MATT BLACK', 'camioneta', 1, 'd'),
+(14, '70218K 17X9.0 6X139.7 ET:-12 CB:110.1 MATT BLACK', '70218K', 17, 9, 6, 139.7, -12, 110.1, 'MATT BLACK', 'auto', 1, 'd'),
+(15, '70269K 17X9.0 6X139.7 ET:0 CB:110.1 MATT BLACK', '70269K', 17, 9, 6, 139.7, 0, 110.1, 'MATT BLACK', 'auto', 1, 'd'),
+(16, '75405H 17X7.5 5X114.3 ET:35 CB:73.1 MATT BLACK', '75405H', 17, 7.5, 5, 114.3, 35, 73.1, 'MATT BLACK', 'camioneta', 1, 'd'),
+(17, '755807-SB 17X7.5 5X114.3 ET:38 CB:67 SATIN BLACK', '755807-SB', 17, 7.5, 5, 114.3, 38, 67, 'SATIN BLACK', 'camioneta', 1, 'd'),
+(18, 'BK5369 17X8 5X127-5X139.7 ET:15 CB:77.8 BLACK MATT', 'BK5369', 17, 8, 5, 127, 15, 77.8, 'BLACK MATT', 'camioneta', 1, 'd'),
+(19, 'DIM1008 17X9.0 6X139.7 ET:0 CB:110.50 CZ1-TB', 'DIM1008', 17, 9, 6, 139.7, 0, 110.5, 'CZ1-TB', 'camioneta', 1, 'd'),
+(20, 'H002-7 17X7.5 5X114.3 ET:35 CB:73.1 MATT BLACK', 'H002-7', 17, 7.5, 5, 114.3, 35, 73.1, 'MATT BLACK', 'camioneta', 1, 'd'),
+(21, 'N 10553 17 8X_ EIOSS BLACK MACHINE FAC', '10553', 17, 8, 4, 100, -1, -1, 'EIOSS BLACK MACHINE FAC', 'camioneta', 1, 'd'),
+(22, 'N 1168A 17X8J 10X_ HYPER BLACK', '1168A', 17, 8, 5, 110, -1, -1, 'HYPER BLACK', 'camioneta', 1, 'd'),
+(23, 'N JS RACING H1005 17X7.5 5X105 ET35 CB(56.60) BMF', 'H1005', 17, 7.5, 5, 105, 35, 56.6, 'BMF', 'camioneta', 1, 'd');
 
 -- --------------------------------------------------------
 
@@ -234,7 +253,7 @@ ALTER TABLE `accesorio`
 -- AUTO_INCREMENT de la tabla `aro`
 --
 ALTER TABLE `aro`
-  MODIFY `id_aro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_aro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `faro`

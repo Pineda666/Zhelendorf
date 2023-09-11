@@ -30,7 +30,7 @@
     <link href="css/style.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/filtrar_aros.js"></script>
+    <script src="js/filtrar_producto.js"></script>
 </head>
 
 <body>
@@ -75,16 +75,29 @@
                 <option value="108">108</option>
                 <option value="114.3">114.3</option>
             </select>
-            <button type="submit" onclick="filtrar_aros($('#vehiculo').val(),$('#diametro').val(),$('#pernos').val(),$('#pcd').val());">Filtrar</button>
+            <button type="submit" onclick="filtrar_producto('aro','1');">Filtrar</button>
         </div>
 
         <div class="product-grid" id="resultado-busqueda">
+        </div>
+
+        <div>
+            <div>
+                <label id="mostrando"></label>
+            </div>
+            <div id="nav-navegacion"></div>
         </div>
     </main>
 
     <footer>
         <?php require_once("resources/footer.php") ?>
     </footer>
+
+    <script>
+        window.onload = function() {
+            filtrar_producto('aro','1');
+        };
+    </script>
 </body>
 
 </html>

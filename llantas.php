@@ -30,7 +30,7 @@
     <link href="css/style.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/filtrar_llantas.js"></script>
+    <script src="js/filtrar_producto.js"></script>
 </head>
 
 <body>
@@ -41,7 +41,7 @@
         <!-- para el efecto de desvanecer al cargar un filtro -->
         <div class="overlay" id="overlay"></div>
         <div class="loader" id="loader"></div>
-        
+
         <div class="filtro-producto">
             <label>Ancho:</label>
             <select id="ancho" name="ancho_llanta">
@@ -72,14 +72,21 @@
                 <option value="17">17</option>
                 <option value="18">18</option>
             </select>
-            <button type="submit" onclick="filtrar_llantas($('#ancho').val(),$('#perfil').val(),$('#aro').val());">Filtrar</button>
+            <button type="submit" onclick="filtrar_producto('llanta');">Filtrar</button>
         </div>
         <div class="product-grid" id="resultado-busqueda">
         </div>
     </main>
+    
     <footer>
         <?php require_once("resources/footer.php") ?>
     </footer>
+
+    <script>
+        window.onload = function() {
+            filtrar_producto('llanta');
+        };
+    </script>
 </body>
 
 </html>
