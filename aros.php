@@ -75,13 +75,17 @@
                 <option value="108">108</option>
                 <option value="114.3">114.3</option>
             </select>
-            <button type="submit" onclick="filtrar_producto('aro','1');">Filtrar</button>
+            <button type="submit">Filtrar</button>
         </div>
 
-        <div class="product-grid" id="resultado-busqueda">
+        <div class="product-grid" id="content">
         </div>
 
-        <div id="paginacion">
+        <div>
+            <div>
+                <label id="lbl-total"></label>
+            </div>
+            <div id="nav-paginacion"></div>
         </div>
     </main>
 
@@ -90,9 +94,52 @@
     </footer>
 
     <script>
-        window.onload = function() {
-            filtrar_producto('aro','1');
-        };
+        let paginaActual = 1;
+
+        getData(paginaActual)
+
+        document.getElementById("campo").addEventListener("keyup", function() {
+            getData(1)
+        }, false)
+        document.getElementById("vehiculo").addEventListener("change", function() {
+            getData(paginaActual)
+        }, false)
+        document.getElementById("diametro").addEventListener("change", function() {
+            getData(paginaActual)
+        }, false)
+        document.getElementById("pernos").addEventListener("change", function() {
+            getData(paginaActual)
+        }, false)
+        document.getElementById("pcd").addEventListener("change", function() {
+            getData(paginaActual)
+        }, false)
+
+
+        function getData(pagina) {
+            let input = document.getElementById("campo").value;
+            let select_vehiculo = document.getElementById("vehiculo").value;
+            let select_diametro = document.getElementById("diametro").value;
+            let select_pernos = document.getElementById("pernos").value;
+            let select_pcd = document.getElementById("pcd").value;
+
+            let url = "config/filtrar_productos.php"
+            let formData = new FormData()
+            formData.append('campo', input)
+            formData.append('vehiculo', select_vehiculo)
+            formData.append('diametro', select_diametro)
+            formData.append('pernos', select_pernos)
+            formData.append('pcd', select_pcd)
+            formData.append('pagina', pagina)
+
+            fetch(url, {
+                method: "POST",
+                body: formData
+            }).then(response => response.json()).then(data => {
+                document.getElementById("content").innerHTML = data.data
+                // document.getElementById("lbl-total").innerHTML = data.totalFiltro+' resultados'
+                document.getElementById("nav-paginacion").innerHTML = data.paginacion
+            }).catch(err => console.log(err))
+        }
     </script>
 </body>
 
