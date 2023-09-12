@@ -81,11 +81,7 @@
         <div class="product-grid" id="resultado-busqueda">
         </div>
 
-        <div>
-            <div>
-                <label id="mostrando"></label>
-            </div>
-            <div id="nav-navegacion"></div>
+        <div id="paginacion">
         </div>
     </main>
 

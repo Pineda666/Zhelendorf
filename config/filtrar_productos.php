@@ -13,11 +13,17 @@ if ($campo != null) {
     $where = "( nombre LIKE '%" . $campo . "%' )";
 }
 
-if ($_POST['tipo_producto'] == 'aro') {
+$pagina = isset($_POST["pagina"]) ? $_POST["pagina"] : 0;
+$limit_product = 16;
 
-    $pagina = $_POST["pagina"];
-    $limit_product = 16;
+if (!$pagina) {
+    $inicio = 0;
+    $pagina = 1;
+} else {
     $inicio = ($pagina - 1) * $limit_product;
+}
+
+if ($_POST['tipo_producto'] == 'aro') {
 
     $query = "SELECT SQL_CALC_FOUND_ROWS * FROM aro WHERE";
     if (!empty($where)) {
@@ -41,19 +47,17 @@ if ($_POST['tipo_producto'] == 'aro') {
 
     $resultado = $conexion->query($query);
 
-    // total de registros mostrados
+    // total de registros filtrados
     $sqlFiltro = "SELECT FOUND_ROWS()";
     $resFiltro = $conexion->query($sqlFiltro);
     $row_filtro = $resFiltro->fetch(PDO::FETCH_ASSOC);
     $totalFiltro = $row_filtro['FOUND_ROWS()'];
 
-    // total de registros filtrados
+    // total de aros en stock
     $sqlTotal = "SELECT count(id_aro) FROM aro";
     $resTotal = $conexion->query($sqlTotal);
     $row_total = $resTotal->fetch(PDO::FETCH_ASSOC);
     $totalRegistros = $row_total['count(id_aro)'];
-
-    $paginacion = '';
 
     while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
         $id = $row['id_aro'];
@@ -78,24 +82,25 @@ if ($_POST['tipo_producto'] == 'aro') {
         ';
     }
 
+    $paginacion = '';
+
     if ($totalRegistros > 0) {
         $totalPaginas = ceil($totalFiltro / $limit_product);
 
-        $paginacion .= '<nav>';
+        $paginacion .= '<nav class="pagination">';
         $paginacion .= '<ul>';
         for ($i = 1; $i <= $totalPaginas; $i++) {
-            $paginacion .= '<li><a href="#" onclick="filtrar_producto(\'aro\',\'' . $i . '\')">' . $i . '</a></li>'; //se usa el backslash para poder concatenar bien
+            if ($i == $pagina) {
+                $paginacion .= '<li class="active"><a href="#" onclick="filtrar_producto(\'aro\',\'' . $i . '\')">' . $i . '</a></li>';
+            } else {
+                $paginacion .= '<li><a href="#" onclick="filtrar_producto(\'aro\',\'' . $i . '\')">' . $i . '</a></li>'; //se usa el backslash para poder concatenar bien
+            }
         }
         $paginacion .= '</ul>';
         $paginacion .= '</nav>';
     }
 
-    echo '
-    <div>
-        <label id="lbl-total">Mostrando ' . $totalFiltro . ' de ' . $totalRegistros . '</label>
-        ' . $paginacion . '
-    </div>
-    ';
+    echo $paginacion;
 }
 
 if ($_POST['tipo_producto'] == 'llanta') {
