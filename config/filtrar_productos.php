@@ -122,9 +122,9 @@ if ($num_rows > 0) {
             <div class="product">
                 <a href="detalles-producto.php?id=' . $id_producto . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id_producto, KEY_TOKEN) . '">';
         if ($tipo_producto == '2') {
-            $output['data'] .= '<div class="content-image-llantas"><img src="' . $image . '"></div>';
+            $output['data'] .= '<div class="content-image-llantas"><img src="' . $image . '" alt="imagen de producto"></div>';
         } else {
-            $output['data'] .= '<img src="' . $image . '" alt="imagen de aro">';
+            $output['data'] .= '<img src="' . $image . '" alt="imagen de producto">';
         }
         $output['data'] .= '
                 </a>

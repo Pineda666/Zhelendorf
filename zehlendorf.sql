@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-09-2023 a las 22:53:52
+-- Tiempo de generación: 14-09-2023 a las 00:54:56
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -33,6 +33,17 @@ CREATE TABLE `accesorio` (
   `descripcion` text NOT NULL,
   `id_tipo_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `accesorio`
+--
+
+INSERT INTO `accesorio` (`id_accesorio`, `nombre`, `descripcion`, `id_tipo_producto`) VALUES
+(1, 'Tapas demonium', 'Para diametro de aro 18', 4),
+(2, 'ADAPTADOR-MEDIDA-1.25-Y-1.50', 'ADAPTADOR-MEDIDA-1.25-Y-1.50', 4),
+(3, 'TUERCA-21-MEDIDA-1.25-Y-1.50', 'TUERCA-21-MEDIDA-1.25-Y-1.50', 4),
+(4, 'TUERCA-19-MEDIDA-1.25-Y-1.50', 'TUERCA-19-MEDIDA-1.25-Y-1.50', 4),
+(5, 'Logos de tapas', 'Logos de tapas', 4);
 
 -- --------------------------------------------------------
 
@@ -106,6 +117,17 @@ CREATE TABLE `faro` (
   `id_tipo_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `faro`
+--
+
+INSERT INTO `faro` (`id_faro`, `nombre`, `id_tipo_producto`) VALUES
+(1, 'SPK6601 - 55 watts', 3),
+(2, 'SPK1022 - 16 watts 3\"', 3),
+(3, '48 watts 4\"', 3),
+(4, 'SPK6601 - 55 watts 7\"', 3),
+(5, 'SPK6601 - 55 watts 7\"', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -123,6 +145,21 @@ CREATE TABLE `llanta` (
   `id_tipo_producto` int(11) NOT NULL,
   `estado` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `llanta`
+--
+
+INSERT INTO `llanta` (`id_llanta`, `nombre`, `modelo`, `ancho_llanta`, `perfil_llanta`, `diametro_aro`, `id_marca_llanta`, `id_tipo_producto`, `estado`) VALUES
+(1, 'BEARWAY 215/45 ZR17 91W YS618', 'YS618', 215, 45, 17, 1, 2, 'd'),
+(2, 'BRIDGESTONE 245/65R17 DUELER AT REVO 2', 'DUELER AT REVO 2', 245, 65, 17, 2, 2, 'd'),
+(3, 'BRIDGESTONE 265/70R16 112S AT D694 OWT 3', 'AT D694 OWT 3', 265, 70, 16, 2, 2, 'd'),
+(4, 'BRIDGESTONE 265/65R17 112T DUELER AT REVO 2', 'DUELER AT REVO 2', 265, 65, 17, 2, 2, 'd'),
+(5, 'BRIDGESTONE 205/55R17 91W TURANZA T001', 'TURANZA T001', 205, 55, 17, 2, 2, 'd'),
+(6, 'BRIDGESTONE 225/65R17 DUELER AT REVO 2', 'DUELER AT REVO 2', 225, 65, 17, 2, 2, 'd'),
+(7, 'DUNLOP 225/60R17 99H SP SPORT 270', 'SP SPORT 270', 225, 60, 17, 4, 2, 'd'),
+(8, 'DUNLOP 235/40R18 95W DZ102', 'DZ102', 235, 40, 18, 4, 2, 'd'),
+(9, 'DUNLOP 165/60R14 75T -SP TOOURING R1 TH', '-SP TOOURING R1 TH', -165, 60, 14, 4, 2, 'd');
 
 -- --------------------------------------------------------
 
@@ -219,7 +256,7 @@ ALTER TABLE `tipo_producto`
 -- AUTO_INCREMENT de la tabla `accesorio`
 --
 ALTER TABLE `accesorio`
-  MODIFY `id_accesorio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_accesorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `aro`
@@ -231,13 +268,13 @@ ALTER TABLE `aro`
 -- AUTO_INCREMENT de la tabla `faro`
 --
 ALTER TABLE `faro`
-  MODIFY `id_faro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_faro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `llanta`
 --
 ALTER TABLE `llanta`
-  MODIFY `id_llanta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_llanta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `marca_llanta`
