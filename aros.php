@@ -28,9 +28,6 @@
 
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/filtrar_producto.js"></script>
 </head>
 
 <body>
@@ -40,10 +37,6 @@
     </header>
 
     <main>
-        <!-- para el efecto de desvanecer al cargar un filtro -->
-        <div class="overlay" id="overlay"></div>
-        <div class="loader" id="loader"></div>
-
         <div class="filtro-producto">
             <label>Vehículo:</label>
             <select id="vehiculo" name="vehiculo">
@@ -75,16 +68,12 @@
                 <option value="108">108</option>
                 <option value="114.3">114.3</option>
             </select>
-            <button type="submit">Filtrar</button>
         </div>
 
         <div class="product-grid" id="content">
         </div>
 
         <div>
-            <div>
-                <label id="lbl-total"></label>
-            </div>
             <div id="nav-paginacion"></div>
         </div>
     </main>
@@ -94,6 +83,7 @@
     </footer>
 
     <script>
+        let tipo_producto = '1';
         let paginaActual = 1;
 
         getData(paginaActual)
@@ -114,7 +104,6 @@
             getData(paginaActual)
         }, false)
 
-
         function getData(pagina) {
             let input = document.getElementById("campo").value;
             let select_vehiculo = document.getElementById("vehiculo").value;
@@ -130,13 +119,13 @@
             formData.append('pernos', select_pernos)
             formData.append('pcd', select_pcd)
             formData.append('pagina', pagina)
+            formData.append('tipo_producto', tipo_producto)
 
             fetch(url, {
                 method: "POST",
                 body: formData
             }).then(response => response.json()).then(data => {
                 document.getElementById("content").innerHTML = data.data
-                // document.getElementById("lbl-total").innerHTML = data.totalFiltro+' resultados'
                 document.getElementById("nav-paginacion").innerHTML = data.paginacion
             }).catch(err => console.log(err))
         }

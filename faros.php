@@ -1,17 +1,3 @@
-<?php
-require 'config/config.php';
-require 'config/conexionbd.php';
-$db = new Database();
-$con = $db->conectar();
-
-$sql = $con->prepare("SELECT id_faro,nombre,id_tipo_producto FROM faro");
-$sql->execute();
-$resultado = $sql->fetchAll(PDO::FETCH_ASSOC); //ese fetch es para sociar por nombre de columnas
-
-$numeroTelefono = '+51959959195';
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -51,30 +37,11 @@ $numeroTelefono = '+51959959195';
     </header>
 
     <main>
-        <div class="product-grid">
-            <?php foreach ($resultado as $row) { ?>
+        <div class="product-grid" id="content">
+        </div>
 
-                <?php
-                $id = $row['id_faro'];
-                $image = "images/faros/" . $id . "/principal.webp";
-
-                if (!file_exists($image)) {
-                    $image = "images/no-photo.jpg";
-                }
-
-                $nombre = $row['nombre'];
-                $mensaje = 'Hola! Aros Zehlendorf, estoy interesado en comprar el producto ' . $nombre;
-                $enlaceWhatsApp = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=" . urlencode($mensaje);
-                ?>
-                <div class="product">
-                    <a href="detalles-producto.php?id=<?php echo $row['id_faro']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_faro'], KEY_TOKEN); ?>"><img src="<?php echo $image; ?>"></a>
-                    <a href="detalles-producto.php?id=<?php echo $row['id_faro']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_faro'], KEY_TOKEN); ?>">
-                        <h2><?php echo $nombre; ?></h2>
-                    </a>
-                    <a href="detalles-producto.php?id=<?php echo $row['id_faro']; ?>&tipo=<?php echo $row['id_tipo_producto']; ?>&token=<?php echo hash_hmac('sha1', $row['id_faro'], KEY_TOKEN); ?>" class="btn-details">Detalles</a>
-                    <a href="<?php echo $enlaceWhatsApp; ?>" class="btn-availability">Consultar disponibilidad</a>
-                </div>
-            <?php } ?>
+        <div>
+            <div id="nav-paginacion"></div>
         </div>
     </main>
 
@@ -82,6 +49,34 @@ $numeroTelefono = '+51959959195';
         <?php require_once("resources/footer.php") ?>
     </footer>
 
+    <script>
+        let tipo_producto = '3';
+        let paginaActual = 1;
+
+        getData(paginaActual)
+
+        document.getElementById("campo").addEventListener("keyup", function() {
+            getData(1)
+        }, false)
+
+        function getData(pagina) {
+            let input = document.getElementById("campo").value;
+
+            let url = "config/filtrar_productos.php"
+            let formData = new FormData()
+            formData.append('campo', input)
+            formData.append('pagina', pagina)
+            formData.append('tipo_producto', tipo_producto)
+
+            fetch(url, {
+                method: "POST",
+                body: formData
+            }).then(response => response.json()).then(data => {
+                document.getElementById("content").innerHTML = data.data
+                document.getElementById("nav-paginacion").innerHTML = data.paginacion
+            }).catch(err => console.log(err))
+        }
+    </script>
 </body>
 
 </html>

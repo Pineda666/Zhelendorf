@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-09-2023 a las 19:06:23
+-- Tiempo de generación: 13-09-2023 a las 22:53:52
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -34,17 +34,6 @@ CREATE TABLE `accesorio` (
   `id_tipo_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `accesorio`
---
-
-INSERT INTO `accesorio` (`id_accesorio`, `nombre`, `descripcion`, `id_tipo_producto`) VALUES
-(1, 'Tapas demonium', 'Para diametro de aro 18', 4),
-(2, 'ADAPTADOR-MEDIDA-1.25-Y-1.50', 'ADAPTADOR-MEDIDA-1.25-Y-1.50', 4),
-(3, 'TUERCA-21-MEDIDA-1.25-Y-1.50', 'TUERCA-21-MEDIDA-1.25-Y-1.50', 4),
-(4, 'TUERCA-19-MEDIDA-1.25-Y-1.50', 'TUERCA-19-MEDIDA-1.25-Y-1.50', 4),
-(5, 'Logos de tapas', 'Logos de tapas', 4);
-
 -- --------------------------------------------------------
 
 --
@@ -58,7 +47,7 @@ CREATE TABLE `aro` (
   `diametro` float NOT NULL,
   `ancho` float NOT NULL,
   `pernos` float NOT NULL,
-  `pcd` float NOT NULL,
+  `pcd` varchar(50) NOT NULL,
   `et` float NOT NULL,
   `cb` float NOT NULL,
   `color` varchar(50) NOT NULL,
@@ -72,29 +61,38 @@ CREATE TABLE `aro` (
 --
 
 INSERT INTO `aro` (`id_aro`, `nombre`, `modelo`, `diametro`, `ancho`, `pernos`, `pcd`, `et`, `cb`, `color`, `vehiculo`, `id_tipo_producto`, `estado`) VALUES
-(1, 'N RO A875 15X7.0 4X100 ET25 CB(73.1) XB', '151032', 15, 7, 4, 100, 25, 73.1, 'XB', 'auto', 1, 'd'),
-(2, 'N RO 157088 15X7.0 4X100 4X114.3 BLACK MACHINE FACE', '7088', 15, 7, 4, 100, -1, -1, 'BLACK MACHINE FACE', 'auto', 1, 'd'),
-(3, 'N RO 5819 15X7.0 4X100 4X114.3 BLUE UNDERCUT BLACK MACHINE FACE', 'RO 5819', 15, 7, 4, 100, -1, -1, 'BLUE UNDERCUT BLACK MACHINE FACE', 'auto', 1, 'd'),
-(4, 'N HC 15Y5171A 15X6.5 5X100 MB', '5171A', 15, 6.5, 5, 100, -1, -1, 'MB', 'auto', 1, 'd'),
-(5, '1095 17X9.0 6X139.7 ET:0 CB:110.5 BLACK LP', '1095', 17, 9, 6, 139.7, 0, 110.5, 'BLACK LP', 'auto', 1, 'd'),
-(6, '1117 17X7.0 5X114.3 ET:35 CB:73.1 DARK GMMF', '1117', 17, 7, 5, 114.3, 35, 73.1, 'DARK GMMF', 'camioneta', 1, 'd'),
-(7, '11659-3 17X9.0 6X139.7 ET:15 CB:106 MATT BLACK', '11659-3', 17, 9, 6, 139.7, 15, 106, 'MATT BLACK', 'camioneta', 1, 'd'),
-(8, '3915 17X7.5 4X100 ET:35 CB:73 SILVER MF', '3915', 17, 7.5, 4, 100, 35, 73, 'SILVER MF', 'camioneta', 1, 'd'),
-(9, '5127 17X8.0 5X112 ET:35 CB:66.45 HYPER BLACK', '5127', 17, 8, 5, 112, 35, 66.45, 'HYPER BLACK', 'camioneta', 1, 'd'),
-(10, '601 17×8.5 6X139.7 ET:12 CB:110 MSB', '601', 17, 8.5, 6, 139.7, 12, 110, 'MSB', 'camioneta', 1, 'd'),
-(11, '602 17X8.5 6X139.7 ET:0 CB:110.1 FSB', '602', 17, 8.5, 6, 139.7, 0, 110.1, 'FSB', 'camioneta', 1, 'd'),
-(12, '602 CAMIONETA 17X8.5 5X127 ET:-12 CB:-71.56 FSB', '602', 17, 8.5, 5, 127, -12, -71.56, 'FSB', 'camioneta', 1, 'd'),
-(13, '70217K 17X9.0 6X139.7 ET:-12 CB:110.1 MATT BLACK', '70217K', 17, 9, 6, 139.7, -12, 110.1, 'MATT BLACK', 'camioneta', 1, 'd'),
-(14, '70218K 17X9.0 6X139.7 ET:-12 CB:110.1 MATT BLACK', '70218K', 17, 9, 6, 139.7, -12, 110.1, 'MATT BLACK', 'auto', 1, 'd'),
-(15, '70269K 17X9.0 6X139.7 ET:0 CB:110.1 MATT BLACK', '70269K', 17, 9, 6, 139.7, 0, 110.1, 'MATT BLACK', 'auto', 1, 'd'),
-(16, '75405H 17X7.5 5X114.3 ET:35 CB:73.1 MATT BLACK', '75405H', 17, 7.5, 5, 114.3, 35, 73.1, 'MATT BLACK', 'camioneta', 1, 'd'),
-(17, '755807-SB 17X7.5 5X114.3 ET:38 CB:67 SATIN BLACK', '755807-SB', 17, 7.5, 5, 114.3, 38, 67, 'SATIN BLACK', 'camioneta', 1, 'd'),
-(18, 'BK5369 17X8 5X127-5X139.7 ET:15 CB:77.8 BLACK MATT', 'BK5369', 17, 8, 5, 127, 15, 77.8, 'BLACK MATT', 'camioneta', 1, 'd'),
-(19, 'DIM1008 17X9.0 6X139.7 ET:0 CB:110.50 CZ1-TB', 'DIM1008', 17, 9, 6, 139.7, 0, 110.5, 'CZ1-TB', 'camioneta', 1, 'd'),
-(20, 'H002-7 17X7.5 5X114.3 ET:35 CB:73.1 MATT BLACK', 'H002-7', 17, 7.5, 5, 114.3, 35, 73.1, 'MATT BLACK', 'camioneta', 1, 'd'),
-(21, 'N 10553 17 8X_ EIOSS BLACK MACHINE FAC', '10553', 17, 8, 4, 100, -1, -1, 'EIOSS BLACK MACHINE FAC', 'camioneta', 1, 'd'),
-(22, 'N 1168A 17X8J 10X_ HYPER BLACK', '1168A', 17, 8, 5, 110, -1, -1, 'HYPER BLACK', 'camioneta', 1, 'd'),
-(23, 'N JS RACING H1005 17X7.5 5X105 ET35 CB(56.60) BMF', 'H1005', 17, 7.5, 5, 105, 35, 56.6, 'BMF', 'camioneta', 1, 'd');
+(1, '6093 13X7.0 4X100-4X108 ET:0 CB:73.1 B MACH+B LINE', 'ufeff6093', 13, 7, 4, '100/108', 0, 73.1, 'B MACH+B LINE', 'auto', 1, 'a'),
+(2, '13P2228A 13X5.5 4X100-4X114.3 ET:35 CB:73.1 MB', '13P2228A', 13, 5.5, 4, '100/114.3', 35, 73.1, 'MB', 'auto', 1, 'a'),
+(3, 'JA036B 13X6.0 4X100 ET:-6 CB:73 LSB3SZ8', 'JA036B', 13, 6, 4, '100', -6, 73, 'LSB3SZ8', 'auto', 1, 'a'),
+(4, '13CJA035H 13X6.0 4X100-4X114 ET:-6 CB:73.1 FS1', '13CJA035H', 13, 6, 4, '100/114.3', -6, 73.1, 'FS1', 'auto', 1, 'd'),
+(5, '2228 13X5.5 4X100-4X114 ET:35 CB:73.1 FSG DARK GM MF', '2228', 13, 5.5, 4, '100/114.3', 35, 73.1, 'FSG DARK GM MF', 'auto', 1, 'a'),
+(6, '13PJA035F 13×6.0 4X100-4X108 ET:-6 CB:73.1 FSB3', '13PJA035F', 13, 6, 4, '100/108', -6, 73.1, 'FSB3', 'auto', 1, 'a'),
+(7, '13P2228A 13X5.5 4X100-4X114.3 ET:35 CB:73.1 MB', '13P2228A', 13, 5.5, 4, '100', 35, 73.1, 'MB', 'auto', 1, 'a'),
+(8, '2228 13X5.5 4X100-4X114 ET:35 CB:73.1 FSG BLACK MF', '2228', 13, 5.5, 4, '100/114.3', 35, 73.1, 'FSG BLACK MF', 'auto', 1, 'd'),
+(9, '7003 14X5.5 4X100-4X114.3 ET:30 CB:73.1 B4NLTR', '7003', 14, 5.5, 4, '100/114.3', 30, 73.1, 'B4NLTR', 'auto', 1, 'd'),
+(10, '5297D 14X5.5 4X100-4X114.3 ET:35 CB:73.1 BM FACE', '5297D', 14, 5.5, 4, '100/114.3', 35, 73.1, 'BM FACE', 'auto', 1, 'd'),
+(11, 'DM622 15X7.0 4X100-4X114.3 ET:35 CB:73.1 B4NLTU4', 'DM622', 15, 7, 4, '100/114.3', 35, 73.1, 'B4NLTU4', 'auto', 1, 'd'),
+(12, 'H039-5 15X6.5 4X100 ET:35 CB:73.1 MATT BLACK', 'H039-5', 15, 6.5, 4, '100', 35, 73.1, 'MATT BLACK', 'auto', 1, 'd'),
+(13, 'H231 15X8.0 hueXesp ET:20 CB:73.1 DARK G+L P+L', 'H231', 15, 8, 4, '-', 20, 73.1, 'DARK G+L P+L', 'auto', 1, 'd'),
+(14, 'H002-5 15X6 5X114.3 ET:35 CB:73.1 MATT BLACK', 'H002-5', 15, 6, 5, '114.3', 35, 73.1, 'MATT BLACK', 'auto', 1, 'd'),
+(15, 'DM622 15X7.0 8X100-114.3 ET:35 CB:73.1 B4NLTR', 'DM622', 15, 7, 4, '100/114.3', 35, 73.1, 'B4NLTR', 'auto', 1, 'd'),
+(16, 'DM7003 15X7 8X100-114.3 ET:35 CB:73.1 B4NL', 'DM7003', 15, 7, 4, '100/114.3', 35, 73.1, 'B4NL', 'auto', 1, 'a'),
+(17, 'DM7003 15X7.0 4X100-4X114 ET:35 CB:73.1 B4NLTU4', 'DM7003', 15, 7, 4, '100/114.3', 35, 73.1, 'B4NLTU4', 'auto', 1, 'd'),
+(18, 'CIRCUIT 15X6.0 4X100-4X108 ET:35 CB:73.1 SILVER', 'CIRCUIT', 15, 6, 4, '100/108', 35, 73.1, 'SILVER', 'auto', 1, 'a'),
+(19, '7090 15X7.0 4X100/4X108 ET:35 CB:73.1 BLACK VC MACHINE', '7090', 15, 7, 4, '100/108', 35, 73.1, 'BLACK VC MACHINE', 'auto', 1, 'd'),
+(20, 'VLF-C05 15X8.0 4X100-4X114.3 ET:25 CB:73.1 MB', 'VLF-C05', 15, 8, 4, '100/114.3', 25, 73.1, 'MB', 'auto', 1, 'd'),
+(21, 'VLF-C05 15X8.0 4X100-4X114.3 ET:25 CB:73.1 GOLD', 'VLF-C05', 15, 8, 4, '100/114.3', -1, -1, 'GOLD', 'auto', 1, 'd'),
+(22, '502 15X6.5 4X100 ET:40 CB:73.1 FSB', '502', 15, 6.5, 4, '100', 40, 73.1, 'FSB', 'auto', 1, 'd'),
+(23, 'Y0073 15X6.5 4X100 ET:38 CB:73.1 60 MATT BLACK', 'Y0073', 15, 6.5, 4, '100', 38, 73.1, '60 MATT BLACK', 'auto', 1, 'd'),
+(24, '14PJA115B 15X6.5 4X100-4X114.3 ET:25 CB:73.1 FSB3', '14PJA115B', 15, 6.5, 4, '100/114.3', 25, 73.1, 'FSB3', 'auto', 1, 'a'),
+(25, '749 15X8.0 5X114.3 ET:0 CB:84 BG1', '749', 15, 8, 5, '114.3', 0, 84, 'BG1', 'auto', 1, 'd'),
+(26, 'RAYS CLUB 16X7.0 8X100-114.3 ET:40 CB:73.1 BMF', 'RAYS CLUB', 16, 7, 4, '100/114.3', 40, 73.1, 'BMF', 'auto', 1, 'd'),
+(27, 'Y0073 16X7.0 4X100 ET:40 CB:73.1 60 MATT BLACK', 'Y0073', 16, 7, 4, '100', 40, 73.1, '60 MATT BLACK', 'auto', 1, 'd'),
+(28, 'VLF11 16X7.0 4X100 ET:38 CB:73.1 HYPER BLACK', 'VLF11', 16, 7, 4, '100', 38, 73.1, 'HYPER BLACK', 'auto', 1, 'd'),
+(29, '5120 16X7.0 4X100 ET:35 CB:67.1 BMF', '5120', 16, 7, 4, '100', 35, 67.1, 'BMF', 'auto', 1, 'd'),
+(30, '502 16X7.0 4X100 ET:40 CB:73.1 FSB2', '502', 16, 7, 4, '100', 40, 73.1, 'FSB2', 'auto', 1, 'd'),
+(31, 'H088-6 16X7 5X114.3 ET:35 CB:73.1 MATT BLACK', 'H088-6', 16, 7, 5, '114.3', 35, 73.1, 'MATT BLACK', 'auto', 1, 'd'),
+(32, 'JA157 16X7.0 4X100-4X114.3 ET:35 CB:73 HYPER BLACK', 'JA157', 16, 7, 4, '100/114.3', 35, 73, 'HYPER BLACK', 'auto', 1, 'a');
 
 -- --------------------------------------------------------
 
@@ -107,17 +105,6 @@ CREATE TABLE `faro` (
   `nombre` varchar(200) NOT NULL,
   `id_tipo_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `faro`
---
-
-INSERT INTO `faro` (`id_faro`, `nombre`, `id_tipo_producto`) VALUES
-(1, 'SPK6601 - 55 watts', 3),
-(2, 'SPK1022 - 16 watts 3\"', 3),
-(3, '48 watts 4\"', 3),
-(6, 'SPK6601 - 55 watts 7\"', 3),
-(7, 'SPK6601 - 55 watts 7\"', 3);
 
 -- --------------------------------------------------------
 
@@ -137,21 +124,6 @@ CREATE TABLE `llanta` (
   `estado` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `llanta`
---
-
-INSERT INTO `llanta` (`id_llanta`, `nombre`, `modelo`, `ancho_llanta`, `perfil_llanta`, `diametro_aro`, `id_marca_llanta`, `id_tipo_producto`, `estado`) VALUES
-(1, 'BEARWAY 215/45 ZR17 91W YS618', 'YS618', 215, 45, 17, 1, 2, 'd'),
-(2, 'BRIDGESTONE 245/65R17 DUELER AT REVO 2', 'DUELER AT REVO 2', 245, 65, 17, 2, 2, 'd'),
-(3, 'BRIDGESTONE 265/70R16 112S AT D694 OWT 3', 'AT D694 OWT 3', 265, 70, 16, 2, 2, 'd'),
-(4, 'BRIDGESTONE 265/65R17 112T DUELER AT REVO 2', 'DUELER AT REVO 2', 265, 65, 17, 2, 2, 'd'),
-(5, 'BRIDGESTONE 205/55R17 91W TURANZA T001', 'TURANZA T001', 205, 55, 17, 2, 2, 'd'),
-(6, 'BRIDGESTONE 225/65R17 DUELER AT REVO 2', 'DUELER AT REVO 2', 225, 65, 17, 2, 2, 'd'),
-(7, 'DUNLOP 225/60R17 99H SP SPORT 270', 'SP SPORT 270', 225, 60, 17, 4, 2, 'd'),
-(8, 'DUNLOP 235/40R18 95W DZ102', 'DZ102', 235, 40, 18, 4, 2, 'd'),
-(9, 'DUNLOP 165/60R14 75T -SP TOOURING R1 TH', '-SP TOOURING R1 TH', -165, 60, 14, 4, 2, 'd');
-
 -- --------------------------------------------------------
 
 --
@@ -160,14 +132,14 @@ INSERT INTO `llanta` (`id_llanta`, `nombre`, `modelo`, `ancho_llanta`, `perfil_l
 
 CREATE TABLE `marca_llanta` (
   `id_marca_llanta` int(11) NOT NULL,
-  `marca` varchar(100) NOT NULL
+  `marca_llanta` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `marca_llanta`
 --
 
-INSERT INTO `marca_llanta` (`id_marca_llanta`, `marca`) VALUES
+INSERT INTO `marca_llanta` (`id_marca_llanta`, `marca_llanta`) VALUES
 (1, 'Bearway'),
 (2, 'Bridgestone'),
 (3, 'Double Star'),
@@ -247,25 +219,25 @@ ALTER TABLE `tipo_producto`
 -- AUTO_INCREMENT de la tabla `accesorio`
 --
 ALTER TABLE `accesorio`
-  MODIFY `id_accesorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_accesorio` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `aro`
 --
 ALTER TABLE `aro`
-  MODIFY `id_aro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_aro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `faro`
 --
 ALTER TABLE `faro`
-  MODIFY `id_faro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_faro` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `llanta`
 --
 ALTER TABLE `llanta`
-  MODIFY `id_llanta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_llanta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `marca_llanta`

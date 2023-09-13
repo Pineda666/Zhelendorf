@@ -2,23 +2,51 @@
 require 'conexionbd.php';
 require 'config.php';
 
-$columns = [
-    'id_aro', 'nombre', 'modelo', 'diametro', 'ancho', 'pernos', 'pcd', 'et', 'cb', 'color', 'vehiculo', 'id_tipo_producto', 'estado'
-];
-$table = "aro";
-$id = 'id_aro';
-
 $campo = isset($_POST['campo']) ? $conn->real_escape_string($_POST['campo']) : null;
+$tipo_producto = isset($_POST['tipo_producto']) ? $conn->real_escape_string($_POST['tipo_producto']) : null;
 $vehiculo = isset($_POST['vehiculo']) ? $conn->real_escape_string($_POST['vehiculo']) : 'todos';
 $diametro = isset($_POST['diametro']) ? $conn->real_escape_string($_POST['diametro']) : 'todos';
 $pernos = isset($_POST['pernos']) ? $conn->real_escape_string($_POST['pernos']) : 'todos';
 $pcd = isset($_POST['pcd']) ? $conn->real_escape_string($_POST['pcd']) : 'todos';
+$ancho_llanta = isset($_POST['ancho_llanta']) ? $conn->real_escape_string($_POST['ancho_llanta']) : 'todos';
+$perfil_llanta = isset($_POST['perfil_llanta']) ? $conn->real_escape_string($_POST['perfil_llanta']) : 'todos';
+$diametro_aro = isset($_POST['diametro_aro']) ? $conn->real_escape_string($_POST['diametro_aro']) : 'todos';
+
+switch ($tipo_producto) {
+    case '1':
+        $table = "aro";
+        $id_name = 'id_aro';
+        break;
+    case '2':
+        $table = "llanta";
+        $id_name = 'id_llanta';
+        break;
+    case '3':
+        $table = "faro";
+        $id_name = 'id_faro';
+        break;
+    case '4':
+        $table = "accesorio";
+        $id_name = 'id_accesorio';
+        break;
+    default:
+        echo 'Error: No existe el tipo de producto';
+        exit;
+}
 
 $where = '';
 $filtro = '';
 
 if ($campo != null) {
-    $where .= "( nombre LIKE '%" . $campo . "%' ) ";
+    $where .= "( nombre LIKE '%" . $campo . "%' ";
+    //para poder filtrar pcd con dos valores y buscar en la barra también
+    if ($pcd != 'todos') {
+        $where .= " OR pcd LIKE '%" . $pcd . "%' ) ";
+    } else {
+        $where .= " )";
+    }
+} elseif ($pcd != 'todos') {
+    $where .= "( pcd LIKE '%" . $pcd . "%' ) ";
 }
 if ($vehiculo != 'todos') {
     $filtro .= "AND vehiculo = '" . $vehiculo . "'";
@@ -29,11 +57,17 @@ if ($diametro != 'todos') {
 if ($pernos != 'todos') {
     $filtro .= "AND pernos = '" . $pernos . "'";
 }
-if ($pcd != 'todos') {
-    $filtro .= "AND pcd = '" . $pcd . "'";
+if ($ancho_llanta != 'todos') {
+    $filtro .= "AND ancho_llanta = '" . $ancho_llanta . "'";
+}
+if ($perfil_llanta != 'todos') {
+    $filtro .= "AND perfil_llanta = '" . $perfil_llanta . "'";
+}
+if ($diametro_aro != 'todos') {
+    $filtro .= "AND diametro_aro = '" . $diametro_aro . "'";
 }
 
-$limit = 8;
+$limit = 16;
 $pagina = isset($_POST['pagina']) ? $conn->real_escape_string($_POST['pagina']) : 0;
 
 if (!$pagina) {
@@ -45,8 +79,7 @@ if (!$pagina) {
 
 $sLimit = "LIMIT $inicio , $limit";
 
-$sql = "SELECT SQL_CALC_FOUND_ROWS " . implode(", ", $columns) . "
-FROM $table WHERE ";
+$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM $table WHERE ";
 if (!empty($where)) {
     $sql .= $where;
 } else {
@@ -63,38 +96,42 @@ $row_filtro = $resFiltro->fetch_array();
 $totalFiltro = $row_filtro[0];
 
 // total de aros en stock
-$sqlTotal = "SELECT count($id) FROM $table";
-$resTotal = $conn->query($sqlTotal);
-$row_total = $resTotal->fetch_array();
-$totalRegistros = $row_total[0];
+// $sqlTotal = "SELECT count($id_name) FROM $table";
+// $resTotal = $conn->query($sqlTotal);
+// $row_total = $resTotal->fetch_array();
+// $totalRegistros = $row_total[0];
 
 //mostrar resultados
 $output = [];
-$output['totalRegistros'] = $totalRegistros;
+// $output['totalRegistros'] = $totalRegistros;
 $output['totalFiltro'] = $totalFiltro;
 $output['data'] = '';
 $output['paginacion'] = '';
 
 if ($num_rows > 0) {
     while ($row = $resultado->fetch_assoc()) {
-        $id = $row['id_aro'];
-        $image = 'images/aros/' . $id . '/principal.webp';
+        $id_producto = array_shift($row); //captura el valor de la primera columna de la fila $row
+        $image = 'images/' . $table . 's/' . $id_producto . '/principal.webp';
 
         $nombre = $row['nombre'];
-        $tipo_producto = $row['id_tipo_producto'];
-        $mensaje = 'Hola! Aros Zehlendorf, estoy interesado en comprar el producto ' . $nombre;
+        $mensaje = 'Hola! Aros Zehlendorf, estoy interesado en ' . $nombre;
         $numeroTelefono = '+51959959195';
         $enlaceWhatsApp = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=" . urlencode($mensaje);
 
         $output['data'] .= '
             <div class="product">
-                <a href="config/show_detail_product.php?id=' . $id . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id, KEY_TOKEN) . '">
-                    <img src="' . $image . '" alt="imagen de aro">
+                <a href="detalles-producto.php?id=' . $id_producto . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id_producto, KEY_TOKEN) . '">';
+        if ($tipo_producto == '2') {
+            $output['data'] .= '<div class="content-image-llantas"><img src="' . $image . '"></div>';
+        } else {
+            $output['data'] .= '<img src="' . $image . '" alt="imagen de aro">';
+        }
+        $output['data'] .= '
                 </a>
-                <a href="config/show_detail_product.php?id=' . $id . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id, KEY_TOKEN) . '">
+                <a href="detalles-producto.php?id=' . $id_producto . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id_producto, KEY_TOKEN) . '">
                     <h2>' . $nombre . '</h2>
                 </a>
-                <a href="config/show_detail_product.php?id=' . $id . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id, KEY_TOKEN) . '" class="btn-details">Detalles</a>
+                <a href="detalles-producto.php?id=' . $id_producto . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id_producto, KEY_TOKEN) . '" class="btn-details">Detalles</a>
                 <a href="' . $enlaceWhatsApp . '" class="btn-availability">Consultar disponibilidad</a>
             </div>
         ';
@@ -139,42 +176,3 @@ if ($output['totalFiltro'] > 0) {
 }
 
 echo json_encode($output, JSON_UNESCAPED_UNICODE); //el unescaped se usa en caso haya algun caracter especial o cualquier cosita
-
-// if ($_POST['tipo_producto'] == 'llanta') {
-
-//     $query = "SELECT*FROM llanta WHERE nombre != ''";
-//     if ($_POST['ancho'] != 'todos') {
-//         $query .= "AND ancho_llanta = '" . $_POST['ancho'] . "'";
-//     }
-//     if ($_POST['perfil'] != 'todos') {
-//         $query .= "AND perfil_llanta = '" . $_POST['perfil'] . "'";
-//     }
-//     if ($_POST['aro'] != 'todos') {
-//         $query .= "AND diametro_aro = '" . $_POST['aro'] . "'";
-//     }
-
-//     $resultado = $conexion->query($query);
-
-//     while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
-//         $id = $row['id_llanta'];
-//         $image = 'images/llantas/' . $id . '/principal.webp';
-
-//         $nombre = $row['nombre'];
-//         $tipo_producto = $row['id_tipo_producto'];
-//         $mensaje = 'Hola! Aros Zehlendorf, estoy interesado en comprar el producto ' . $nombre;
-//         $enlaceWhatsApp = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=" . urlencode($mensaje);
-
-//         echo '        
-//             <div class="product">
-//                 <a href="detalles-producto.php?id=' . $id . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id, KEY_TOKEN) . '">
-//                     <div class="content-image-llantas"><img src="' . $image . '"></div>
-//                 </a>
-//                 <a href="detalles-producto.php?id=' . $id . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id, KEY_TOKEN) . '">
-//                     <h2>' . $nombre . '</h2>
-//                 </a>
-//                 <a href="detalles-producto.php?id=' . $id . '&tipo=' . $tipo_producto . '&token=' . hash_hmac('sha1', $id, KEY_TOKEN) . '" class="btn-details">Detalles</a>
-//                 <a href="' . $enlaceWhatsApp . '" class="btn-availability">Consultar disponibilidad</a>
-//             </div>
-//         ';
-//     }
-// }

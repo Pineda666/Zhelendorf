@@ -125,6 +125,7 @@
 /********** CUERPO **********/
 main {
     font-family: Arial, sans-serif;
+    min-height: 750px;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -132,31 +133,6 @@ main {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-}
-
-/* Estilo para la capa de fondo opaco */
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.5);
-    /* Fondo semitransparente */
-    z-index: 9999;
-    /* Asegura que esté en la parte superior */
-}
-
-/* Estilo para el elemento de carga */
-.loader {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10000;
-    /* Asegura que esté en la parte superior */
 }
 
 .slider-superior {
@@ -276,7 +252,7 @@ main {
     height: 100%;
 }
 
-.video-index{
+.video-index {
     padding: 20px 0;
 }
 
@@ -285,7 +261,8 @@ main {
     height: 400px;
 }
 
-/* Estilo para el contenedor principal */
+/********** PRODUCTOS **********/
+
 .filtro-producto {
     display: flex;
     flex-wrap: wrap;
@@ -299,14 +276,12 @@ main {
     text-align: center;
 }
 
-/* Estilo para las etiquetas (labels) */
 .filtro-producto label {
     font-weight: bold;
     margin-right: 10px;
     text-align: right;
 }
 
-/* Estilo para los selectores */
 .filtro-producto select {
     padding: 10px;
     border: 1px solid #ccc;
@@ -314,25 +289,6 @@ main {
     margin-right: 10px;
     font-size: 16px;
     text-align: center;
-}
-
-/* Estilo para el botón de filtrar */
-.filtro-producto button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 20px;
-    cursor: pointer;
-}
-
-/********** PRODUCTOS **********/
-
-.filtro-producto ul {
-    display: grid;
-    gap: 20px;
-    padding-top: 50px;
-    justify-items: center;
 }
 
 .product-grid {
@@ -413,6 +369,7 @@ main {
 .pagination ul li {
     display: inline-block;
     margin-right: 5px;
+    margin-top: 20px;
 }
 
 .pagination ul li a {
@@ -536,6 +493,11 @@ main {
 /********** RESPONSIVE CELULAR **********/
 @media(max-width:767px) {
 
+    /********** CUERPO **********/
+    main {
+        min-height: 645px;
+    }
+
     /********** HEADER **********/
     .header-top {
         flex-direction: column;
@@ -645,6 +607,10 @@ main {
 
 /********** RESPONSIVE TABLET **********/
 @media(min-width:768px) and (max-width:1023px) {
+    /********** CUERPO **********/
+    main {
+        min-height: 630px;
+    }
 
     /********** HEADER **********/
     .header-bottom {
