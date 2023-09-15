@@ -9,6 +9,7 @@ $diametro = isset($_POST['diametro']) ? $conn->real_escape_string($_POST['diamet
 $pernos = isset($_POST['pernos']) ? $conn->real_escape_string($_POST['pernos']) : 'todos';
 $pcd = isset($_POST['pcd']) ? $conn->real_escape_string($_POST['pcd']) : 'todos';
 $ancho_llanta = isset($_POST['ancho_llanta']) ? $conn->real_escape_string($_POST['ancho_llanta']) : 'todos';
+$id_marca_llanta = isset($_POST['id_marca_llanta']) ? $conn->real_escape_string($_POST['id_marca_llanta']) : 'todos';
 $perfil_llanta = isset($_POST['perfil_llanta']) ? $conn->real_escape_string($_POST['perfil_llanta']) : 'todos';
 $diametro_aro = isset($_POST['diametro_aro']) ? $conn->real_escape_string($_POST['diametro_aro']) : 'todos';
 
@@ -57,6 +58,9 @@ if ($diametro != 'todos') {
 if ($pernos != 'todos') {
     $filtro .= "AND pernos = '" . $pernos . "'";
 }
+if ($id_marca_llanta != 'todos') {
+    $filtro .= "AND id_marca_llanta = '" . $id_marca_llanta . "'";
+}
 if ($ancho_llanta != 'todos') {
     $filtro .= "AND ancho_llanta = '" . $ancho_llanta . "'";
 }
@@ -68,7 +72,7 @@ if ($diametro_aro != 'todos') {
 }
 
 $limit = 16;
-$pagina = isset($_POST['pagina']) ? $conn->real_escape_string($_POST['pagina']) : 0;
+$pagina = isset($_POST['pagina']) ? $conn->real_escape_string($_POST['pagina']) : 1;
 
 if (!$pagina) {
     $inicio = 0;
@@ -175,4 +179,4 @@ if ($output['totalFiltro'] > 0) {
     $output['paginacion'] .= '</nav>';
 }
 
-echo json_encode($output, JSON_UNESCAPED_UNICODE); //el unescaped se usa en caso haya algun caracter especial o cualquier cosita
+echo json_encode($output , JSON_UNESCAPED_UNICODE); //el unescaped se usa en caso haya algun caracter especial o cualquier cosita

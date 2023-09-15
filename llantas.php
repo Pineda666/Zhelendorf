@@ -36,7 +36,30 @@
     </header>
     <main>
         <div class="filtro-producto">
-            <label>Ancho:</label>
+            <label for="id_marca_llanta">Marca:</label>
+            <select id="id_marca_llanta" name="id_marca_llanta">
+                <option value="todos">Todos</option>
+                <option value="1">Bearway</option>
+                <option value="2">Bridgestone</option>
+                <option value="3">Double Star</option>
+                <option value="4">Dunlop</option>
+                <option value="5">Hankook</option>
+                <option value="6">Roadking</option>
+                <option value="7">Ling Long</option>
+                <option value="8">Nankang</option>
+                <option value="9">Sunfull</option>
+                <option value="10">Ecovision</option>
+                <option value="11">Kapsen</option>
+                <option value="12">Maxxis</option>
+                <option value="13">Good Year</option>
+                <option value="14">Rapidash</option>
+                <option value="15">Hifly</option>
+                <option value="16">Fronway</option>
+                <option value="17">Tourador</option>
+                <option value="18">Pirelli</option>
+                <option value="19">Federal</option>
+            </select>
+            <label for="ancho_llanta">Ancho:</label>
             <select id="ancho_llanta" name="ancho_llanta">
                 <option value="todos">Todos</option>
                 <option value="205">205</option>
@@ -45,9 +68,9 @@
                 <option value="235">235</option>
                 <option value="245">245</option>
                 <option value="265">265</option>
-                <option value="-165">-165</option>
+                <option value="165">165</option>
             </select>
-            <label>Perfil:</label>
+            <label for="perfil_llanta">Perfil:</label>
             <select id="perfil_llanta" name="perfil_llanta">
                 <option value="todos">Todos</option>
                 <option value="40">40</option>
@@ -57,7 +80,7 @@
                 <option value="65">65</option>
                 <option value="70">70</option>
             </select>
-            <label>Aro:</label>
+            <label for="diametro_aro">Aro:</label>
             <select id="diametro_aro" name="diametro_aro">
                 <option value="todos">Todos</option>
                 <option value="14">14</option>
@@ -88,6 +111,9 @@
         document.getElementById("campo").addEventListener("keyup", function() {
             getData(1)
         }, false)
+        document.getElementById("id_marca_llanta").addEventListener("change", function() {
+            getData(paginaActual)
+        }, false)
         document.getElementById("ancho_llanta").addEventListener("change", function() {
             getData(paginaActual)
         }, false)
@@ -100,6 +126,7 @@
 
         function getData(pagina) {
             let input = document.getElementById("campo").value;
+            let select_marca_llanta = document.getElementById("id_marca_llanta").value;
             let select_ancho_llanta = document.getElementById("ancho_llanta").value;
             let select_perfil_llanta = document.getElementById("perfil_llanta").value;
             let select_diametro_aro = document.getElementById("diametro_aro").value;
@@ -107,6 +134,7 @@
             let url = "config/filtrar_productos.php"
             let formData = new FormData()
             formData.append('campo', input)
+            formData.append('id_marca_llanta', select_marca_llanta)
             formData.append('ancho_llanta', select_ancho_llanta)
             formData.append('perfil_llanta', select_perfil_llanta)
             formData.append('diametro_aro', select_diametro_aro)

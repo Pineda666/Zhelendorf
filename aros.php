@@ -38,13 +38,13 @@
 
     <main>
         <div class="filtro-producto">
-            <label>Vehículo:</label>
+            <label for="vehiculo">Vehículo:</label>
             <select id="vehiculo" name="vehiculo">
                 <option value="todos">Todos</option>
                 <option value="auto">Auto</option>
                 <option value="camioneta">Camioneta</option>
             </select>
-            <label>Diámetro:</label>
+            <label for="diametro">Diámetro:</label>
             <select id="diametro" name="diametro_aro">
                 <option value="todos">Todos</option>
                 <option value="15">15</option>
@@ -52,7 +52,7 @@
                 <option value="17">17</option>
                 <option value="18">18</option>
             </select>
-            <label>Pernos:</label>
+            <label for="pernos">Pernos:</label>
             <select id="pernos" name="pernos">
                 <option value="todos">Todos</option>
                 <option value="4">4</option>
@@ -60,7 +60,7 @@
                 <option value="6">6</option>
                 <option value="7">7</option>
             </select>
-            <label>PCD:</label>
+            <label for="pcd">PCD:</label>
             <select id="pcd" name="pcd">
                 <option value="todos">Todos</option>
                 <option value="100">100</option>

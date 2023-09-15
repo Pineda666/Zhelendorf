@@ -171,7 +171,7 @@ $enlaceWhatsApp = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=" . 
                                 <th>PCD:</th>
                                 <th><?php echo $pcd; ?></th>
                             </tr>
-                            <?php if ($et >= '0' && $cb >= '0') { ?>
+                            <?php if ($et != '0' && $cb != '0') { ?>
                                 <tr>
                                     <th>ET:</th>
                                     <th><?php echo $et; ?></th>

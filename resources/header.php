@@ -1,6 +1,7 @@
 <div class="header-content">
     <div class="header-top">
-        <div class="logo-header"><a href="http://localhost/NUEVO%20ZEHLENDORF"><img class="logo-img" src="images/header/logo-nuevo-pequenio.webp" alt="logo"></a></div>
+        <!-- cambiar el href a https://zehlendorf-aros.com/ -->
+        <div class="logo-header"><a href="/NUEVO ZEHLENDORF/"><img class="logo-img" src="images/header/logo-nuevo-pequenio.webp" alt="logo"></a></div>
         <div class="redes-header">
             <div class="text-header-top"><span>Visita nuestras redes:</span></div>
             <div class="iconos-header">
@@ -13,6 +14,7 @@
     </div>
     <div class="header-bottom">
         <div class="menu-header">
+            <!-- para subirlo a producción cambiar a /aros.php -->
             <a href="aros.php" <?php if ($_SERVER['PHP_SELF'] == '/NUEVO ZEHLENDORF/aros.php') echo 'class="active"'; ?> id="botones-menu">
                 <div class="text-menu-header">Aros</div>
             </a>
